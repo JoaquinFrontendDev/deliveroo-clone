@@ -9,7 +9,9 @@ const initialState = {
     genre: null,
     address: null,
     short_description: null,
-    dishes: null
+    dishes: null,
+    lat: null,
+    long: null
   },
 }
 
