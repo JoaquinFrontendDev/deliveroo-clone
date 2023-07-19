@@ -1,21 +1,39 @@
-import { Text, View, SafeAreaView, Image, Platform, StyleSheet, ScrollView } from 'react-native';
-import React, { useLayoutEffect } from 'react';
-import { useNavigation } from '@react-navigation/native';
-import { UserIcon, ChevronDownIcon, MagnifyingGlassIcon, AdjustmentsVerticalIcon } from 'react-native-heroicons/outline';
-import Constants from 'expo-constants';
-import { TextInput } from 'react-native';
-import Categories from '../components/Categories/Categories';
-import FeaturedRow from '../components/FeaturedRow/FeaturedRow';
+import { Text, View, SafeAreaView, Image, Platform, StyleSheet, ScrollView, TextInput } from 'react-native'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
+import { useNavigation } from '@react-navigation/native'
+import { UserIcon, ChevronDownIcon, MagnifyingGlassIcon, AdjustmentsVerticalIcon } from 'react-native-heroicons/outline'
+import Constants from 'expo-constants'
+import Categories from '../components/Categories/Categories'
+import FeaturedRow from '../components/FeaturedRow/FeaturedRow'
+import sanityClient from '../sanity'
 
 const HomeScreen = () => {
-
-  const navigation = useNavigation();
+  const navigation = useNavigation()
+  const [featuredCategories, setFeaturedCategories] = useState([])
 
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false
-    });
-  }, []);
+    })
+  }, [])
+
+  useEffect(() => { }, [
+    sanityClient
+      .fetch(
+        `
+      *[_type == "featured"] {
+        ...,
+        restaurants[]->{
+          ...,
+          dishes[] ->
+        }
+      }`
+      )
+      .then((data) => {
+        setFeaturedCategories(data);
+      }),
+  ]);
+
 
   return (
     <SafeAreaView style={style.container}>
@@ -49,25 +67,18 @@ const HomeScreen = () => {
         contentContainerStyle={{ paddingBottom: 100 }}
       >
         <Categories />
-        <FeaturedRow
-          id="12345"
-          title="Featured"
-          description="Paid placements from our partners"
-        />
-        <FeaturedRow
-          id="12345"
-          title="Tasty Discounts"
-          description="Everyone's been enjoying these juicy discounts!"
-        />
-        <FeaturedRow
-          id="12345"
-          title="Offers near you!"
-          description="Why not support your local restaurant tonight!"
-        />
+        {featuredCategories?.map((category) => (
+          <FeaturedRow
+            key={category._id}
+            id={category._id}
+            title={category.name}
+            description={category.short_description}
+          />
+        ))}
       </ScrollView>
     </SafeAreaView>
-  );
-};
+  )
+}
 
 const style = StyleSheet.create({
   container: {
@@ -75,6 +86,6 @@ const style = StyleSheet.create({
       android: Constants.statusBarHeight
     })
   }
-});
+})
 
-export default HomeScreen;;
+export default HomeScreen
