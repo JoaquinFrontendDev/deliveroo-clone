@@ -3,7 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/AppScreens/HomeScreen';
 import "react-native-url-polyfill/auto"
 import RestaurantScreen from './screens/AppScreens/RestaurantScreen';
-import { Provider, useDispatch, useSelector } from 'react-redux';
+import { Provider } from 'react-redux';
 import { store } from './store'
 import BasketScreen from './screens/AppScreens/BasketScreen';
 import PreparingOrderScreen from './screens/AppScreens/PreparingOrderScreen';
@@ -27,7 +27,7 @@ const AuthStack = () => (
 
 const MainStack = () => (
   <Stack.Navigator>
-    <Stack.Screen name="Home" component={HomeScreen} />
+    <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
     <Stack.Screen name="Restaurant" component={RestaurantScreen} />
     <Stack.Screen name="Basket" component={BasketScreen}
       options={{ presentation: 'modal', headerShown: false }}
@@ -42,13 +42,13 @@ const MainStack = () => (
 );
 
 export default function App () {
-  const [user, setUser] = useState(null)
+  const [stateUser, setStateUser] = useState(null)
 
   useEffect(() => {
     onAuthStateChanged(FIREBASE_AUTH, (user) => {
       if (user) {
         const { displayName, email, photoURL } = user;
-        setUser({ displayName, email, photoUrl: photoURL });
+        setStateUser({ displayName, email, photoUrl: photoURL });
       }
     });
   }, []);
@@ -56,7 +56,7 @@ export default function App () {
   return (
     <Provider store={store}>
       <NavigationContainer>
-        {user ? <MainStack /> : <AuthStack />}
+        {stateUser ? <MainStack /> : <AuthStack />}
       </NavigationContainer>
     </Provider>
   );

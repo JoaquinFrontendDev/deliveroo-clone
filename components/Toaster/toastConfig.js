@@ -8,8 +8,8 @@ export const toastConfig = {
       style={{ borderLeftColor: colors['success'] }}
       contentContainerStyle={{ paddingHorizontal: 15 }}
       text1Style={{
-        fontSize: 15,
-        fontWeight: '400'
+        fontSize: 18,
+        fontWeight: '700'
       }}
     />
   ),
@@ -19,8 +19,8 @@ export const toastConfig = {
       style={{ borderLeftColor: colors['error'] }}
       contentContainerStyle={{ paddingHorizontal: 15 }}
       text1Style={{
-        fontSize: 15,
-        fontWeight: '400'
+        fontSize: 18,
+        fontWeight: '700'
       }}
     />
   ),
@@ -30,8 +30,8 @@ export const toastConfig = {
       style={{ borderLeftColor: colors['info'] }}
       contentContainerStyle={{ paddingHorizontal: 15 }}
       text1Style={{
-        fontSize: 15,
-        fontWeight: '400'
+        fontSize: 18,
+        fontWeight: '700'
       }}
     />
   )

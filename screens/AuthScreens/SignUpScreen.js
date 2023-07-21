@@ -1,11 +1,9 @@
-import { View, Text, SafeAreaView, TextInput, TouchableOpacity, ScrollView } from 'react-native'
+import { View, Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { setUserInState } from '../../slices/userSlice'
 import { FIREBASE_AUTH } from '../../firebaseConfig'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useNavigation } from '@react-navigation/native'
-import { Formik, useField } from 'formik';
+import { Formik } from 'formik';
 import { signupValidationSchema } from '../../validationSchemas/signup'
 import { ArrowLeftIcon } from 'react-native-heroicons/solid'
 import TextInputField from '../../components/TextInputField/TextInputField'
@@ -16,7 +14,6 @@ import { showToast } from '../../components/Toaster/showToast'
 const SignUpScreen = () => {
   const auth = FIREBASE_AUTH
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const dispatch = useDispatch()
   const navigation = useNavigation()
 
   const initialValues = {
@@ -31,8 +28,9 @@ const SignUpScreen = () => {
     try {
       showToast('info', 'signup')
       const { user } = await createUserWithEmailAndPassword(auth, username, password)
-      user.displayName = `${ firstName } ${ lastName }`
-      dispatch(setUserInState({ displayName: user.displayName, email: user.email, photoUrl: user.photoURL }))
+      updateProfile(auth.currentUser, {
+        displayName: `${ firstName } ${ lastName }`
+      })
       showToast('success', 'signup')
     } catch (error) {
       showToast('error', 'signup')

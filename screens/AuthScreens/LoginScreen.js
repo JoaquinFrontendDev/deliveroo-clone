@@ -1,7 +1,5 @@
 import { View, Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-native'
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-import { selectUser } from '../../slices/userSlice'
 import { FIREBASE_AUTH } from '../../firebaseConfig'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useNavigation } from '@react-navigation/native'
@@ -13,7 +11,6 @@ import Toast from 'react-native-toast-message'
 import { toastConfig } from '../../components/Toaster/toastConfig'
 
 const LoginScreen = () => {
-  const user = useSelector(selectUser)
   const auth = FIREBASE_AUTH
   const navigation = useNavigation()
   const [isPasswordVisible, setPasswordVisible] = useState(false);
@@ -24,9 +21,8 @@ const LoginScreen = () => {
   }
 
   const signIn = async ({ username, password }) => {
-    console.log(password, username)
     try {
-      await signInWithEmailAndPassword(auth, username, password)
+      const { user } = await signInWithEmailAndPassword(auth, username, password)
       showToast('success', 'login')
     } catch (error) {
       showToast('error', 'login')
@@ -34,7 +30,6 @@ const LoginScreen = () => {
   }
 
   const handleSubmit = (values) => {
-    console.log(values)
     signIn(values)
   }
 
@@ -91,7 +86,7 @@ const LoginScreen = () => {
                 <Text onPress={() => navigation.navigate('SignUp')} className='text-[#00CCBB] text-xl font-bold'>Sign Up</Text>
               </View>
             </SafeAreaView>
-            <Toast config={toastConfig}/>
+            <Toast config={toastConfig} />
           </ScrollView>
         )
       }}
