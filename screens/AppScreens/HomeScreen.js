@@ -3,9 +3,9 @@ import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { UserIcon, ChevronDownIcon, MagnifyingGlassIcon, AdjustmentsVerticalIcon } from 'react-native-heroicons/outline'
 import Constants from 'expo-constants'
-import Categories from '../components/Categories/Categories'
-import FeaturedRow from '../components/FeaturedRow/FeaturedRow'
-import sanityClient from '../sanity'
+import Categories from '../../components/Categories/Categories'
+import FeaturedRow from '../../components/FeaturedRow/FeaturedRow'
+import sanityClient from '../../sanity'
 
 const HomeScreen = () => {
   const navigation = useNavigation()

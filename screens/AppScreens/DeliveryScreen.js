@@ -2,7 +2,7 @@ import { View, SafeAreaView, Text, Image, TouchableOpacity, StyleSheet } from 'r
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
-import { selectRestaurant } from '../slices/restaurantSlice'
+import { selectRestaurant } from '../../slices/restaurantSlice'
 import { XMarkIcon } from 'react-native-heroicons/solid'
 import * as Progress from 'react-native-progress'
 import MapView, { Marker } from 'react-native-maps'
@@ -66,7 +66,7 @@ const DeliveryScreen = () => {
         />
       </MapView>
 
-      <SafeAreaView className='bg-white flex-row items-center space-x-5 h-20'>
+      <SafeAreaView className='bg-white flex-row items-center space-x-5 h-28'>
         <Image source={{
           uri: "https://links.papareact.com/wru"
         }}

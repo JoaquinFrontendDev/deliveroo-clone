@@ -2,12 +2,12 @@ import { View, Text, SafeAreaView, TouchableOpacity, StyleSheet, Image, ScrollVi
 import React, { useMemo, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectRestaurant } from '../slices/restaurantSlice'
-import { removeFromBasket, selectBasketItems, selectBasketTotal } from '../slices/basketSlice'
+import { selectRestaurant } from '../../slices/restaurantSlice'
+import { removeFromBasket, selectBasketItems, selectBasketTotal } from '../../slices/basketSlice'
 import { XCircleIcon } from 'react-native-heroicons/solid'
 import Constants from 'expo-constants'
-import { urlFor } from '../sanity'
-import { formatPrice } from '../utils/formatPrice'
+import { urlFor } from '../../sanity'
+import { formatPrice } from '../../utils/formatPrice'
 
 const BasketScreen = () => {
 
