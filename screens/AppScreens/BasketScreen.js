@@ -29,7 +29,7 @@ const BasketScreen = () => {
   return (
     <SafeAreaView style={styles.container} className='flex-1 bg-white'>
       <View className='flex-1 bg-gray-100'>
-        <View className='p-5 border-b border-[#00CCBB] bg-white shadow-xs'>
+        <View className='p-5 border-b border-[#4EC0BB] bg-white shadow-xs'>
           <View className='mt-4'>
             <Text className='text-lg font-bold text-center'>Basket</Text>
             <Text className='text-center text-gray-400'>{selectedRestaurant.title}</Text>
@@ -51,14 +51,14 @@ const BasketScreen = () => {
           />
           <Text className='flex-1'>Deliver in 50-75 min</Text>
           <TouchableOpacity>
-            <Text className='text-[#00CCBB]'>Change</Text>
+            <Text className='text-[#4EC0BB]'>Change</Text>
           </TouchableOpacity>
         </View>
 
         <ScrollView className='divide-y divide-gray-200'>
           {Object.entries(groupedItemsInBasket).map(([key, items]) => (
             <View key={key} className='flex-row items-center space-x-3 bg-white py-2 px-5'>
-              <Text className='text-[#00CCBB] '>{items.length} x</Text>
+              <Text className='text-[#4EC0BB] '>{items.length} x</Text>
               <Image
                 source={{ uri: urlFor(items[0].image).url() }}
                 className='h-12 w-12 rounded-full'
@@ -70,7 +70,7 @@ const BasketScreen = () => {
 
               <TouchableOpacity>
                 <Text
-                  className='text-[#00CCBB] text-xs'
+                  className='text-[#4EC0BB] text-xs'
                   onPress={() => dispatch(removeFromBasket({ id: key }))}
                 >
                   Remove
@@ -95,7 +95,7 @@ const BasketScreen = () => {
           </View>
 
           <TouchableOpacity
-            className='rounded-lg bg-[#00CCBB] p-4'
+            className='rounded-lg bg-[#4EC0BB] p-4'
             onPress={() => navigation.navigate('PreparingOrder')}
           >
             <Text

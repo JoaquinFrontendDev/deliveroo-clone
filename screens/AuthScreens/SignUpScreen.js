@@ -10,11 +10,13 @@ import TextInputField from '../../components/TextInputField/TextInputField'
 import { toastConfig } from '../../components/Toaster/toastConfig'
 import Toast from 'react-native-toast-message'
 import { showToast } from '../../components/Toaster/showToast'
+import { useUpdateUser } from '../../hooks/useUpdateUser'
 
 const SignUpScreen = () => {
   const auth = FIREBASE_AUTH
   const [isPasswordVisible, setPasswordVisible] = useState(false);
   const navigation = useNavigation()
+  const updateUser = useUpdateUser()
 
   const initialValues = {
     firstName: '',
@@ -28,9 +30,12 @@ const SignUpScreen = () => {
     try {
       showToast('info', 'signup')
       const { user } = await createUserWithEmailAndPassword(auth, username, password)
-      updateProfile(auth.currentUser, {
+      await updateProfile(user, {
         displayName: `${ firstName } ${ lastName }`
       })
+      // Espera a que updateProfile se complete antes de llamar a updateUser.
+      await user.reload()
+      updateUser()
       showToast('success', 'signup')
     } catch (error) {
       showToast('error', 'signup')
@@ -54,7 +59,7 @@ const SignUpScreen = () => {
               <ArrowLeftIcon color="#00CCBB" size={25} />
             </TouchableOpacity>
             <View className='absolute top-14 right-5'>
-              <Text className='text-xl text-[#00CCBB]'>{`Let's signup!`}</Text>
+              <Text className='text-xl text-[#4EC0BB]'>{`Let's signup!`}</Text>
             </View>
             <SafeAreaView className='flex-1 items-center justify-center space-y-10 px-8 bg-white'>
               {/* FirstName input */}
@@ -91,7 +96,7 @@ const SignUpScreen = () => {
                     name='password'
                   />
                 </View>
-                <Text onPress={() => setPasswordVisible(!isPasswordVisible)} className='text-[#00CCBB] text-xl px-4 self-start top-2'>{isPasswordVisible ? "Hide" : "Show"}</Text>
+                <Text onPress={() => setPasswordVisible(!isPasswordVisible)} className='text-[#4EC0BB] text-xl px-4 self-start top-2'>{isPasswordVisible ? "Hide" : "Show"}</Text>
               </View>
 
 
@@ -120,16 +125,16 @@ const SignUpScreen = () => {
               </View>
 
               <View className='w-full -translate-y-8'>
-                <Text className='text-xs text-gray-400 text-left'>By continuing you agree to our <Text className='text-[#00CCBB]'>T@Cs.</Text>Please also check out our <Text className='text-[#00CCBB]'>Privacy Policy</Text></Text>
+                <Text className='text-xs text-gray-400 text-left'>By continuing you agree to our <Text className='text-[#4EC0BB]'>T@Cs.</Text>Please also check out our <Text className='text-[#4EC0BB]'>Privacy Policy</Text></Text>
               </View>
 
               <View className='w-full -translate-y-14'>
-                <Text className='text-xs text-gray-400 text-left'>We use your data to offer you a personalised experience and to better understand and improve our services. For more information <Text className='text-[#00CCBB]'>see here</Text></Text>
+                <Text className='text-xs text-gray-400 text-left'>We use your data to offer you a personalised experience and to better understand and improve our services. For more information <Text className='text-[#4EC0BB]'>see here</Text></Text>
               </View>
 
               {/* Submit button */}
               <TouchableOpacity
-                className='mt-6 bg-[#00CCBB] flex-row w-full py-4 items-center justify-center rounded'
+                className='mt-6 bg-[#4EC0BB] flex-row w-full py-4 items-center justify-center rounded'
                 onPress={formikSubmit}
               >
                 <Text className='text-white text-xl font-semibold'>Create account</Text>

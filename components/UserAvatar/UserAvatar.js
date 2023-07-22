@@ -1,16 +1,27 @@
 import React from 'react';
-import { Text, View } from 'react-native';
-import { FIREBASE_AUTH } from '../../firebaseConfig';
+import { Image, Text, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import { selectCurrentUser } from '../../slices/userSlice';
 
-function Avatar () {
-  const auth = FIREBASE_AUTH
-  const firstLetter = auth && auth?.currentUser?.displayName?.split(' ')[0].charAt(0).toUpperCase();
+function UserAvatar () {
+  const currentUser = useSelector(selectCurrentUser)
 
-  return (
-    <View className='items-center justify-center rounded-full bg-[#00CCBB] w-8 h-8 my-4'>
-      <Text className='text-xl text-white font-bold'>{firstLetter || 'J'}</Text>
-    </View>
-  );
+  if (currentUser && currentUser.photoURL) {
+    return (
+      <Image
+        source={{ uri: currentUser.photoURL }}
+        className='h-8 w-8 bg-gray-300 my-4 p-4 rounded-full' />
+    )
+  } else if (currentUser) {
+    return (
+      <View className='items-center justify-center rounded-full bg-[#4EC0BB] w-8 h-8 my-4'>
+        <Text className='text-xl text-white font-bold'>{currentUser.userFirstLetter}</Text>
+      </View>
+    )
+  } else {
+    return null;
+  }
 }
 
-export default Avatar;
+export default UserAvatar;
+

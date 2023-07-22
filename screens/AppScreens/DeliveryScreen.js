@@ -14,7 +14,7 @@ const DeliveryScreen = () => {
   const selectedRestaurant = useSelector(selectRestaurant)
 
   return (
-    <View className='bg-[#00CCBB] flex-1'>
+    <View className='bg-[#4EC0BB] flex-1'>
       <SafeAreaView className='z-50' style={styles.container}>
         <View className='flex-row justify-between items-center p-5'>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>
@@ -77,7 +77,7 @@ const DeliveryScreen = () => {
           <Text className='text-gray-400'>Your Rider</Text>
         </View>
 
-        <Text className='text-[#00CCBB] text-lg mr-5 font-bold'>Call</Text>
+        <Text className='text-[#4EC0BB] text-lg mr-5 font-bold'>Call</Text>
       </SafeAreaView>
     </View>
   )

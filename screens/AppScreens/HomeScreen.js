@@ -5,63 +5,65 @@ import { UserIcon, ChevronDownIcon, MagnifyingGlassIcon, AdjustmentsVerticalIcon
 import Constants from 'expo-constants'
 import Categories from '../../components/Categories/Categories'
 import FeaturedRow from '../../components/FeaturedRow/FeaturedRow'
-import sanityClient from '../../sanity'
-import Avatar from '../../components/UserAvatar/UserAvatar'
-import { FIREBASE_AUTH } from '../../firebaseConfig'
 import { useCurrentCity } from '../../hooks/useCurrentCity'
+import { MapPinIcon } from 'react-native-heroicons/solid'
+import UserAvatar from '../../components/UserAvatar/UserAvatar'
+import { useSelector } from 'react-redux'
+import { selectCurrentUser } from '../../slices/userSlice'
+import { fetchFeaturedCategories } from '../../services/sanityService'
+import { useUpdateUser } from '../../hooks/useUpdateUser'
 
 const HomeScreen = () => {
   const navigation = useNavigation()
   const [featuredCategories, setFeaturedCategories] = useState([])
-  const auth = FIREBASE_AUTH
   const [city, setCity] = useState(null);
+  const currentUser = useSelector(selectCurrentUser)
+  const updateUser = useUpdateUser()
 
   useEffect(() => {
-    const fetchCity = async () => {
-      const currentCity = await useCurrentCity();
-      setCity(currentCity);
+    const getCurrentCity = async () => {
+      const currentCity = await useCurrentCity()
+      setCity(currentCity)
     }
-    fetchCity();
-  }, []);
 
-  useEffect(() => { }, [
-    sanityClient
-      .fetch(
-        `
-      *[_type == "featured"] {
-        ...,
-        restaurants[]->{
-          ...,
-          dishes[] ->
-        }
-      }`
-      )
-      .then((data) => {
-        setFeaturedCategories(data);
-      }),
-  ]);
+    const fetchFeaturedData = async () => {
+      try {
+        const data = await fetchFeaturedCategories()
+        setFeaturedCategories(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getCurrentCity()
+    updateUser()
+    fetchFeaturedData()
+  }, [])
+
 
 
   return (
     <SafeAreaView style={style.container}>
       <View className='flex-row pb-3 items-center space-x-2 px-4'>
-        {auth.currentUser && !auth.currentUser.photoURL ?
-          <Avatar />
-          :
-          (<Image
-            source={{ uri: auth.currentUser.photoURL }}
-            className='h-8 w-8 bg-gray-300 my-4 p-4 rounded-full' />)}
+        <UserAvatar />
         <View className='flex-1'>
-          <Text className='font-bold text-grey-400 text-xs'>Deliver now!</Text>
+          <Text className='font-bold text-gray-400 text-base'>Now</Text>
           <View className='flex-row items-center space-x-1'>
-            <Text className='font-bold text-xl'>
-              {city ? city : <Text className='text-xl text-gray-400 font-bold'>Finding city...</Text>}
-            </Text>
+            <View>
+              {city ?
+                <View className='flex-row space-x-0.5 items-center'>
+                  <MapPinIcon size={15} color='black' />
+                  <Text className='font-extrabold text-xl'>
+                    {city}
+                  </Text>
+                </View>
+                : <Text className='text-xl text-gray-400 font-bold'>Finding city...</Text>}
+            </View>
             <ChevronDownIcon size={20} color="#00CCBB" />
           </View>
         </View>
 
-        <UserIcon size={35} color="#00CCBB" />
+        <UserIcon size={35} color="#00CCBB" onPress={() => navigation.navigate('MyAccount')} />
       </View>
 
       <View className='flex-row items-center space-x-2 pb-2 mx-4'>

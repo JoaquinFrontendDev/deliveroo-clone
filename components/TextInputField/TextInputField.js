@@ -9,7 +9,7 @@ const TextInputField = ({ name, ...props }) => {
       <TextInput
         onChangeText={value => helpers.setValue(value)}
         value={field.value}
-        className='border-gray-300 border-b pr-4 text-xl py-1 focus:border-[#00CCBB]'
+        className='border-gray-300 border-b pr-4 text-xl py-1 focus:border-[#4EC0BB]'
         {...props}
       />
       <View>

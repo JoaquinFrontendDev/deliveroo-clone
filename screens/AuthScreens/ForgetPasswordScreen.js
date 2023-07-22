@@ -48,7 +48,7 @@ const ForgetPasswordScreen = () => {
                 <ArrowLeftIcon color="#00CCBB" size={25} />
               </TouchableOpacity>
               <View className='absolute -top-8 right-5'>
-                <Text className='text-xl text-[#00CCBB]'>{`Forget password`}</Text>
+                <Text className='text-xl text-[#4EC0BB]'>{`Forget password`}</Text>
               </View>
               <View className='w-full'>
                 <TextInputField
@@ -60,13 +60,13 @@ const ForgetPasswordScreen = () => {
 
               {/* Submit button */}
               <TouchableOpacity
-                className='mt-6 bg-[#00CCBB] flex-row w-full py-4 items-center justify-center rounded'
+                className='mt-6 bg-[#4EC0BB] flex-row w-full py-4 items-center justify-center rounded'
                 onPress={formikSubmit}
               >
                 <Text className='text-white text-xl font-bold'>Reset password</Text>
               </TouchableOpacity>
             </View>
-            <Toast config={toastConfig}/>
+            <Toast config={toastConfig} />
           </SafeAreaView>
         )
       }}

@@ -14,6 +14,8 @@ import ForgetPasswordScreen from './screens/AuthScreens/ForgetPasswordScreen';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { FIREBASE_AUTH } from './firebaseConfig';
+import LoadingScreen from './screens/AuthScreens/LoadingScreen';
+import MyAccountScreen from './screens/AppScreens/MyAccountScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,20 +40,30 @@ const MainStack = () => (
     <Stack.Screen name="Delivery" component={DeliveryScreen}
       options={{ presentation: 'fullScreenModal', headerShown: false }}
     />
+    <Stack.Screen name="MyAccount" component={MyAccountScreen}
+      options={{ presentation: 'fullScreenModal', headerShown: false }}
+    />
   </Stack.Navigator>
 );
 
 export default function App () {
   const [stateUser, setStateUser] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     onAuthStateChanged(FIREBASE_AUTH, (user) => {
       if (user) {
         const { displayName, email, photoURL } = user;
         setStateUser({ displayName, email, photoUrl: photoURL });
+        setIsLoading(false)
       }
+      setIsLoading(false)
     });
-  }, []);
+  }, [onAuthStateChanged]);
+
+  if (isLoading) {
+    return <LoadingScreen />
+  }
 
   return (
     <Provider store={store}>

@@ -9,11 +9,13 @@ import TextInputField from '../../components/TextInputField/TextInputField'
 import { showToast } from '../../components/Toaster/showToast'
 import Toast from 'react-native-toast-message'
 import { toastConfig } from '../../components/Toaster/toastConfig'
+import { useUpdateUser } from '../../hooks/useUpdateUser'
 
 const LoginScreen = () => {
   const auth = FIREBASE_AUTH
   const navigation = useNavigation()
   const [isPasswordVisible, setPasswordVisible] = useState(false);
+  const updateUser = useUpdateUser()
 
   const initialValues = {
     username: '',
@@ -22,7 +24,8 @@ const LoginScreen = () => {
 
   const signIn = async ({ username, password }) => {
     try {
-      const { user } = await signInWithEmailAndPassword(auth, username, password)
+      await signInWithEmailAndPassword(auth, username, password)
+      updateUser()
       showToast('success', 'login')
     } catch (error) {
       showToast('error', 'login')
@@ -39,6 +42,9 @@ const LoginScreen = () => {
       {({ handleSubmit: formikSubmit }) => {
         return (
           <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingTop: 80, paddingBottom: 50, backgroundColor: 'white', paddingHorizontal: 18 }}>
+            <View className='absolute top-14 right-5'>
+              <Text className='text-xl text-[#4EC0BB]'>{`You're logging in`}</Text>
+            </View>
             <SafeAreaView className='flex-1 items-center justify-center space-y-10 bg-white'>
               {/* Username input */}
               <View className='w-full'>
@@ -58,12 +64,12 @@ const LoginScreen = () => {
                     name='password'
                   />
                 </View>
-                <Text onPress={() => setPasswordVisible(!isPasswordVisible)} className='text-[#00CCBB] text-xl px-4 self-start top-2'>{isPasswordVisible ? "Hide" : "Show"}</Text>
+                <Text onPress={() => setPasswordVisible(!isPasswordVisible)} className='text-[#4EC0BB] text-xl px-4 self-start top-2'>{isPasswordVisible ? "Hide" : "Show"}</Text>
               </View>
 
               {/* Submit button */}
               <TouchableOpacity
-                className='mt-6 bg-[#00CCBB] flex-row w-full py-4 items-center justify-center rounded'
+                className='mt-6 bg-[#4EC0BB] flex-row w-full py-4 items-center justify-center rounded'
                 onPress={formikSubmit}
               >
                 <Text className='text-white text-xl font-bold'>Log in</Text>
@@ -71,7 +77,7 @@ const LoginScreen = () => {
 
               {/* Footer */}
               <View className='border border-gray-300 rounded w-full items-center py-4'>
-                <Text onPress={() => navigation.navigate('ForgetPassword')} className='text-[#00CCBB] text-xl'>Forgot password</Text>
+                <Text onPress={() => navigation.navigate('ForgetPassword')} className='text-[#4EC0BB] text-xl'>Forgot password</Text>
               </View>
               <View className='flex-row items-center justify-center'>
                 <View className='flex-1 bg-gray-300 h-[0.7px]'></View>
@@ -83,7 +89,7 @@ const LoginScreen = () => {
                 <View className='flex-1 bg-gray-300 h-[0.7px]'></View>
               </View>
               <View>
-                <Text onPress={() => navigation.navigate('SignUp')} className='text-[#00CCBB] text-xl font-bold'>Sign Up</Text>
+                <Text onPress={() => navigation.navigate('SignUp')} className='text-[#4EC0BB] text-xl font-bold'>Sign Up</Text>
               </View>
             </SafeAreaView>
             <Toast config={toastConfig} />
