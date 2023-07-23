@@ -12,7 +12,7 @@ export async function useCurrentCity () {
     let response = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${ location.coords.latitude }&lon=${ location.coords.longitude }`);
     let data = await response.json();
     const currentCity = data.address.city
-    return currentCity
+    return { currentCity, latitude: location.coords.latitude, longitude: location.coords.longitude }
   } catch (error) {
     console.error(error);
   }

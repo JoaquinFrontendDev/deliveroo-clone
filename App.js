@@ -16,33 +16,42 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { FIREBASE_AUTH } from './firebaseConfig';
 import LoadingScreen from './screens/AuthScreens/LoadingScreen';
 import MyAccountScreen from './screens/AppScreens/MyAccountScreen';
+import UserDetailsScreen from './screens/AppScreens/UserDetailsScreen';
+import NavigationHeader from './components/NavigationHeader/NavigationHeader';
+import MyOrdersScreen from './screens/AppScreens/MyOrdersScreen';
 
 const Stack = createNativeStackNavigator();
 
 const AuthStack = () => (
-  <Stack.Navigator>
-    <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-    <Stack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }} />
-    <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen} options={{ headerShown: false }} />
+  <Stack.Navigator
+    screenOptions={{
+      header: ({ navigation, route, options }) => (
+        <NavigationHeader navigation={navigation} route={route} />
+      )
+    }}
+  >
+    <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="SignUp" component={SignUpScreen} />
+    <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen} />
   </Stack.Navigator>
 );
 
 const MainStack = () => (
-  <Stack.Navigator>
+  <Stack.Navigator
+    screenOptions={{
+      header: ({ navigation, route, options }) => (
+        <NavigationHeader navigation={navigation} route={route} />
+      )
+    }}
+  >
     <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
-    <Stack.Screen name="Restaurant" component={RestaurantScreen} />
-    <Stack.Screen name="Basket" component={BasketScreen}
-      options={{ presentation: 'modal', headerShown: false }}
-    />
-    <Stack.Screen name="PreparingOrder" component={PreparingOrderScreen}
-      options={{ presentation: 'fullScreenModal', headerShown: false }}
-    />
-    <Stack.Screen name="Delivery" component={DeliveryScreen}
-      options={{ presentation: 'fullScreenModal', headerShown: false }}
-    />
-    <Stack.Screen name="MyAccount" component={MyAccountScreen}
-      options={{ presentation: 'fullScreenModal', headerShown: false }}
-    />
+    <Stack.Screen name="Restaurant" component={RestaurantScreen} options={{ headerShown: false }} />
+    <Stack.Screen name="Basket" component={BasketScreen} options={{ presentation: 'modal', headerShown: false }} />
+    <Stack.Screen name="PreparingOrder" component={PreparingOrderScreen} options={{ presentation: 'fullScreenModal', headerShown: false }} />
+    <Stack.Screen name="Delivery" component={DeliveryScreen} options={{ presentation: 'fullScreenModal', headerShown: false }} />
+    <Stack.Screen name="MyAccount" component={MyAccountScreen} />
+    <Stack.Screen name="UserDetails" component={UserDetailsScreen} />
+    <Stack.Screen name="MyOrders" component={MyOrdersScreen} />
   </Stack.Navigator>
 );
 

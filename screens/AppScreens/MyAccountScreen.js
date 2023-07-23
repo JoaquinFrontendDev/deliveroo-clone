@@ -20,21 +20,12 @@ const MyAccountScreen = () => {
   const { pickImage } = useUploadImage()
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingTop: 80, paddingBottom: 50 }}>
-      <View className='absolute top-14 right-5'>
-        <Text className='text-xl text-[#4EC0BB]'>{`My account`}</Text>
-      </View>
-      <TouchableOpacity
-        onPress={navigation.goBack}
-        className='rounded-full bg-gray-100 absolute top-12 left-5 items-center p-1'
-      >
-        <ArrowLeftIcon color="#00CCBB" size={25} />
-      </TouchableOpacity>
+    <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingBottom: 50 }}>
       <SafeAreaView className='flex-1'>
         <View className='w-full px-[20px] flex-row items-center justify-between'>
           <View className='flex-row space-x-2 items-center'>
             <UserAvatar />
-            <Text className='text-xl font-bold'>{`Hello, ${ currentUser.firstName }`}</Text>
+            <Text className='text-lg font-bold'>{`Hello, ${ currentUser.firstName }`}</Text>
           </View>
           <View className='flex-row space-x-1 items-center'>
             <PlusCircleIcon size={20} color="#4EC0BB" onPress={pickImage} />
@@ -50,6 +41,7 @@ const MyAccountScreen = () => {
                 icon={option.icon}
                 label={option.label}
                 footerText={option.footerText}
+                redirectionUrl={option.redirectionUrl}
               />
             </View>
           ))}

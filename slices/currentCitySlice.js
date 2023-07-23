@@ -1,7 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  currentCity: '',
+  city: '',
+  latitude: '',
+  longitude: ''
 }
 
 export const currentCitySlice = createSlice({
@@ -9,7 +11,9 @@ export const currentCitySlice = createSlice({
   initialState,
   reducers: {
     setCurrentCity: (state, { payload }) => {
-      state.currentCity = payload
+      state.city = payload.currentCity
+      state.latitude = payload.latitude
+      state.longitude = payload.longitude
     },
   }
 })
@@ -18,7 +22,10 @@ export const currentCitySlice = createSlice({
 export const { setCurrentCity } = currentCitySlice.actions
 
 /** Selectors */
-export const selectCurrentCity = (state) => state.currentCity.currentCity
+export const selectCurrentCity = createSelector(
+  state => state.currentCity,
+  currentCity => currentCity
+)
 
 /** Reducers export */
 export default currentCitySlice.reducer

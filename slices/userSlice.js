@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createSelector } from "@reduxjs/toolkit";
 
 const initialState = {
   currentUser: {
@@ -8,7 +8,8 @@ const initialState = {
     userFirstLetter: null,
     photoURL: null,
     email: null,
-    lastOrder: null
+    lastOrder: [],
+    isEditing: false
   },
 }
 
@@ -19,26 +20,41 @@ export const currentUserSlice = createSlice({
     setCurrentUser: (state, { payload }) => {
       if (payload.displayName) {
         const names = payload.displayName.split(' ')
-        const firstName = names.shift()
-        const lastName = names.join(' ')
-        const userFirstLetter = firstName.charAt(0)
+        const newFirstName = names.shift()
+        const newLastName = names.join(' ')
+        const newFirstLetter = newFirstName.charAt(0)
+
+        // Comprueba si firstName o lastName han cambiado
+        if (newFirstName !== state.currentUser.firstName || newLastName !== state.currentUser.lastName) {
+          state.currentUser.displayName = `${ newFirstName } ${ newLastName }`
+        }
 
         state.currentUser = {
+          ...state.currentUser,
           ...payload,
-          firstName,
-          lastName,
-          userFirstLetter
+          firstName: newFirstName,
+          lastName: newLastName,
+          userFirstLetter: newFirstLetter
         }
       }
     },
+    setIsEditing: (state, { payload }) => {
+      state.currentUser.isEditing = payload;
+    },
+    setUserLastOrder: (state, { payload }) => {
+      state.currentUser.lastOrder = payload
+    }
   }
 })
 
 /** Actions */
-export const { setCurrentUser } = currentUserSlice.actions
+export const { setCurrentUser, setIsEditing, setUserLastOrder } = currentUserSlice.actions
 
 /** Selectors */
-export const selectCurrentUser = (state) => state.currentUser.currentUser
+export const selectCurrentUser = createSelector(
+  state => state.currentUser.currentUser,
+  currentUser => currentUser
+)
 
 /** Reducers export */
 export default currentUserSlice.reducer

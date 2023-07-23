@@ -51,12 +51,6 @@ const RestaurantScreen = () => {
       }))
   }, [dispatch])
 
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false
-    })
-  }, [])
-
   return (
     <>
       <BasketIcon />

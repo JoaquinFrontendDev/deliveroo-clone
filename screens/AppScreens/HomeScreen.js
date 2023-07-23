@@ -1,4 +1,4 @@
-import { Text, View, SafeAreaView, Image, Platform, StyleSheet, ScrollView, TextInput } from 'react-native'
+import { Text, View, SafeAreaView, Image, Platform, StyleSheet, ScrollView, TextInput, TouchableHighlight, TouchableWithoutFeedback } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { UserIcon, ChevronDownIcon, MagnifyingGlassIcon, AdjustmentsVerticalIcon } from 'react-native-heroicons/outline'
@@ -8,22 +8,24 @@ import FeaturedRow from '../../components/FeaturedRow/FeaturedRow'
 import { useCurrentCity } from '../../hooks/useCurrentCity'
 import { MapPinIcon } from 'react-native-heroicons/solid'
 import UserAvatar from '../../components/UserAvatar/UserAvatar'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../slices/userSlice'
 import { fetchFeaturedCategories } from '../../services/sanityService'
 import { useUpdateUser } from '../../hooks/useUpdateUser'
+import { selectCurrentCity, setCurrentCity } from '../../slices/currentCitySlice'
 
 const HomeScreen = () => {
   const navigation = useNavigation()
   const [featuredCategories, setFeaturedCategories] = useState([])
-  const [city, setCity] = useState(null);
+  const currentCity = useSelector(selectCurrentCity)
   const currentUser = useSelector(selectCurrentUser)
   const updateUser = useUpdateUser()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const getCurrentCity = async () => {
-      const currentCity = await useCurrentCity()
-      setCity(currentCity)
+      const { currentCity, latitude, longitude } = await useCurrentCity()
+      dispatch(setCurrentCity({ currentCity, latitude, longitude }))
     }
 
     const fetchFeaturedData = async () => {
@@ -50,11 +52,11 @@ const HomeScreen = () => {
           <Text className='font-bold text-gray-400 text-base'>Now</Text>
           <View className='flex-row items-center space-x-1'>
             <View>
-              {city ?
+              {currentCity.city ?
                 <View className='flex-row space-x-0.5 items-center'>
                   <MapPinIcon size={15} color='black' />
                   <Text className='font-extrabold text-xl'>
-                    {city}
+                    {currentCity.city}
                   </Text>
                 </View>
                 : <Text className='text-xl text-gray-400 font-bold'>Finding city...</Text>}
@@ -62,8 +64,11 @@ const HomeScreen = () => {
             <ChevronDownIcon size={20} color="#00CCBB" />
           </View>
         </View>
-
-        <UserIcon size={35} color="#00CCBB" onPress={() => navigation.navigate('MyAccount')} />
+        <TouchableWithoutFeedback onPress={() => navigation.navigate('MyAccount')}>
+          <View className='bg-gray-200 rounded-full p-2' >
+            <UserIcon size={22} color="#00CCBB" />
+          </View>
+        </TouchableWithoutFeedback>
       </View>
 
       <View className='flex-row items-center space-x-2 pb-2 mx-4'>

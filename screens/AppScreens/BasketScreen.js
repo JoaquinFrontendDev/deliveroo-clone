@@ -8,22 +8,28 @@ import { XCircleIcon } from 'react-native-heroicons/solid'
 import Constants from 'expo-constants'
 import { urlFor } from '../../sanity'
 import { formatPrice } from '../../utils/formatPrice'
+import { selectCurrentUser, setUserLastOrder } from '../../slices/userSlice'
 
 const BasketScreen = () => {
 
-  const [groupedItemsInBasket, setGroupedItemsInBasket] = useState([])
   const navigation = useNavigation()
   const selectedRestaurant = useSelector(selectRestaurant)
   const selectedBasketItems = useSelector(selectBasketItems)
   const selectedBasketTotal = useSelector(selectBasketTotal)
+  const currentUser = useSelector(selectCurrentUser)
   const dispatch = useDispatch()
 
   useMemo(() => {
     const groupedBasketItems = selectedBasketItems.reduce((results, item) => {
-      (results[item.id] = results[item.id] || []).push(item)
-      return results
-    }, {})
-    setGroupedItemsInBasket(groupedBasketItems)
+      if (results[item.id]) {
+        results[item.id].count += 1;
+      } else {
+        results[item.id] = { ...item, count: 1 };
+      }
+      return results;
+    }, {});
+
+    dispatch(setUserLastOrder(Object.values(groupedBasketItems)));
   }, [selectedBasketItems])
 
   return (
@@ -56,22 +62,22 @@ const BasketScreen = () => {
         </View>
 
         <ScrollView className='divide-y divide-gray-200'>
-          {Object.entries(groupedItemsInBasket).map(([key, items]) => (
-            <View key={key} className='flex-row items-center space-x-3 bg-white py-2 px-5'>
-              <Text className='text-[#4EC0BB] '>{items.length} x</Text>
+          {currentUser.lastOrder.flat().map((item) => (
+            <View key={item.id} className='flex-row items-center space-x-3 bg-white py-2 px-5'>
+              <Text className='text-[#4EC0BB] '>{item.count} x</Text>
               <Image
-                source={{ uri: urlFor(items[0].image).url() }}
+                source={{ uri: urlFor(item.image).url() }}
                 className='h-12 w-12 rounded-full'
               />
-              <Text className='flex-1'>{items[0].name}</Text>
+              <Text className='flex-1'>{item.name}</Text>
               <Text className='text-gray-600'>
-                {formatPrice(items[0]?.price)}
+                {formatPrice(item.price)}
               </Text>
 
               <TouchableOpacity>
                 <Text
                   className='text-[#4EC0BB] text-xs'
-                  onPress={() => dispatch(removeFromBasket({ id: key }))}
+                  onPress={() => dispatch(removeFromBasket({ id: item.id }))}
                 >
                   Remove
                 </Text>
