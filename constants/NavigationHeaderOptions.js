@@ -34,6 +34,16 @@ const NavigationHeaderOptions = [
     withBackBtn: true,
     headerText: 'My Favorites'
   },
+  {
+    route: 'FAQs',
+    withBackBtn: true,
+    headerText: 'FAQs'
+  },
+  {
+    route: 'AllergyInfo',
+    withBackBtn: true,
+    headerText: 'Have any food allergy?'
+  },
 ]
 
 export default NavigationHeaderOptions

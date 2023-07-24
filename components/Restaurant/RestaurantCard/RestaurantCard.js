@@ -7,6 +7,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurant, setRestaurant } from '../../../slices/restaurantSlice';
 import { selectIsFavorite, toggleFavorite } from '../../../slices/restaurantsSlice';
+import { formatRating } from '../../../utils/formatRating';
 
 const RestaurantCard = ({
   id,
@@ -20,13 +21,13 @@ const RestaurantCard = ({
   long,
   lat,
   delivery_time,
-  onFavoriteScreen
+  fullWidth
 }) => {
 
   const navigation = useNavigation()
   const dispatch = useDispatch()
-  const selectedRestaurant = useSelector(selectRestaurant)
   const isFavorite = useSelector(state => selectIsFavorite(state, id));
+  const formattedRating = formatRating(rating)
 
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite(id));
@@ -50,7 +51,7 @@ const RestaurantCard = ({
 
   return (
     <TouchableOpacity
-      className={`bg-white rounded-md border-gray-300 ${ onFavoriteScreen ? 'mr-0 shadow-lg' : 'mr-3 shadow' }`}
+      className={`bg-white rounded-md border-gray-300 ${ fullWidth ? 'mr-0 shadow-lg' : 'mr-3 shadow' }`}
       onPress={() => navigation.navigate('Restaurant', {
         id,
         imageUrl,
@@ -67,16 +68,19 @@ const RestaurantCard = ({
     >
       <Image
         source={{ uri: urlFor(imageUrl).url() }}
-        className={`rounded-t-md object-center ${ onFavoriteScreen ? 'w-full h-52' : 'h-36 w-72' }`}
+        className={`rounded-t-md object-center ${ fullWidth ? 'w-full h-52' : 'h-36 w-72' }`}
         resizeMode='cover'
       />
       <View className='px-3 pb-4'>
         <Text className='font-bold text-lg pt-2'>{title}</Text>
         <View className='flex-row items-center space-x-1'>
-          <StarIcon color="green" opacity={0.5} size={22} />
-          <View className='text-xs text-gray-500 flex-row space-x-2'>
-            <Text className='text-green-500'>{rating}</Text>
-            <Text>{genre}</Text>
+          <StarIcon color="#00CCBB" opacity={0.5} size={22} />
+          <View className='text-xs text-gray-500 flex-row space-x-4 items-center'>
+            <View className='flex-row space-x-1 items-center'>
+              <Text className='text-primary text-xs font-bold'>{formattedRating.value}</Text>
+              <Text className='text-primary text-xs font-bold'>{formattedRating.label}</Text>
+            </View>
+            <Text className='text-xs text-gray-500'>{genre}</Text>
           </View>
         </View>
         <View className='flex-row items-center space-x-1'>

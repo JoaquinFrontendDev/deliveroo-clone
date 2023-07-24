@@ -1,8 +1,11 @@
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity, TouchableHighlight } from 'react-native'
 import React from 'react'
 import { ChevronRightIcon, MapPinIcon, QuestionMarkCircleIcon, StarIcon } from 'react-native-heroicons/solid'
+import { useNavigation } from '@react-navigation/native'
 
-const RestaurantMain = ({title, rating, genre, address, short_description}) => {
+const RestaurantMain = ({ title, rating, genre, address, short_description }) => {
+  const navigation = useNavigation()
+
   return (
     <View className='bg-white'>
       <View className='px-4 pt-4'>
@@ -24,9 +27,9 @@ const RestaurantMain = ({title, rating, genre, address, short_description}) => {
         <Text className='text-gray-500 mt-2 pb-4'>{short_description}</Text>
       </View>
 
-      <TouchableOpacity className='flex-row items-center space-x-2 p-4 border-y border-gray-300'>
+      <TouchableOpacity className='flex-row items-center space-x-2 p-4 border-y border-gray-300' onPress={() => navigation.navigate('AllergyInfo')}>
         <QuestionMarkCircleIcon color="gray" opacity={0.6} size={20} />
-        <Text className='pl-2 flex-1 text-md font-bold'>
+        <Text className='pl-2 flex-1 text-md font-bold text-gray-600'>
           Have a food allergy?
         </Text>
         <ChevronRightIcon color="#00CCBB" />

@@ -1,4 +1,4 @@
-import { ReceiptPercentIcon, HeartIcon, UserIcon, MapPinIcon } from 'react-native-heroicons/solid'
+import { ReceiptPercentIcon, HeartIcon, UserIcon } from 'react-native-heroicons/solid'
 
 const MyAccountOptions = [
   {
@@ -19,14 +19,8 @@ const MyAccountOptions = [
     redirectionUrl: 'UserDetails'
   },
   {
-    icon: MapPinIcon,
-    label: 'Saved addresses',
-    footerText: 'Add new addresses to receive your orders',
-    redirectionUrl: ''
-  },
-  {
     label: 'FAQs',
-    redirectionUrl: ''
+    redirectionUrl: 'FAQs'
   },
 ]
 

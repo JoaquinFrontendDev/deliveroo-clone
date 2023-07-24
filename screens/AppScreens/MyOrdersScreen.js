@@ -5,12 +5,13 @@ import { useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../slices/userSlice'
 import { urlFor } from '../../sanity'
 import { formatPrice } from '../../utils/formatPrice'
+import EmptyOrders from '../../components/EmptyStates/EmptyOrders'
 
 const MyOrdersScreen = () => {
   const currentUser = useSelector(selectCurrentUser)
 
   if (!currentUser.lastOrder.length) {
-    return <Text>No Orders yet</Text>
+    return <EmptyOrders />
   }
 
   if (currentUser.lastOrder) {
