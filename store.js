@@ -4,7 +4,6 @@ import restaurantReducer from './slices/restaurantSlice'
 import restaurantsReducer from './slices/restaurantsSlice'
 import currentCitySlice from "./slices/currentCitySlice";
 import currentUserSlice from "./slices/userSlice";
-import favoritesSlice from './slices/favoritesSlice';
 import thunkMiddleware from 'redux-thunk';
 
 export const store = configureStore({
@@ -14,7 +13,6 @@ export const store = configureStore({
     restaurants: restaurantsReducer,
     currentCity: currentCitySlice,
     currentUser: currentUserSlice,
-    favorites: favoritesSlice
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(thunkMiddleware),
 })
