@@ -1,10 +1,10 @@
 import { View, Text, ScrollView } from 'react-native';
 import React, { useEffect } from 'react';
 import { ArrowRightIcon } from 'react-native-heroicons/outline';
-import RestaurantCard from '../RestaurantCard/RestaurantCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurantsByCategory, setRestaurantsByCategory } from '../../slices/restaurantsSlice';
 import { fetchRestaurantsByCategory } from '../../services/sanityService';
+import RestaurantCard from '../Restaurant/RestaurantCard/RestaurantCard';
 
 const FeaturedRow = ({ id, title, description }) => {
   const dispatch = useDispatch();

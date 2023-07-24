@@ -2,11 +2,11 @@ import { Image, Text, TouchableOpacity, View } from 'react-native';
 import React, { useEffect } from 'react';
 import { HeartIcon, StarIcon } from 'react-native-heroicons/solid';
 import { MapPinIcon, HeartIcon as OutlinedHeartIcon } from 'react-native-heroicons/outline';
-import { urlFor } from '../../sanity';
+import { urlFor } from '../../../sanity';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectRestaurant, setRestaurant } from '../../slices/restaurantSlice';
-import { selectIsFavorite, toggleFavorite } from '../../slices/restaurantsSlice';
+import { selectRestaurant, setRestaurant } from '../../../slices/restaurantSlice';
+import { selectIsFavorite, toggleFavorite } from '../../../slices/restaurantsSlice';
 
 const RestaurantCard = ({
   id,

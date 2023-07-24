@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectBasketItems, selectBasketTotal } from '../../slices/basketSlice'
+import { selectBasketItems, selectBasketTotal } from '../../../slices/basketSlice'
 import { useNavigation } from '@react-navigation/native'
 import { TouchableOpacity } from 'react-native'
-import { formatPrice } from '../../utils/formatPrice'
+import { formatPrice } from '../../../utils/formatPrice'
 
 const BasketIcon = () => {
 
