@@ -29,6 +29,11 @@ const NavigationHeaderOptions = [
     withBackBtn: true,
     headerText: 'My Orders'
   },
+  {
+    route: 'MyFavorites',
+    withBackBtn: true,
+    headerText: 'My Favorites'
+  },
 ]
 
 export default NavigationHeaderOptions

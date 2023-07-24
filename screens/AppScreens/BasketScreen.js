@@ -55,7 +55,7 @@ const BasketScreen = () => {
           }}
             className='h-7 w-7 bg-gray-300 p-4 rounded-full'
           />
-          <Text className='flex-1'>Deliver in 50-75 min</Text>
+          <Text className='flex-1 text-gray-600'>{`Delivers in ${selectedRestaurant.delivery_time} min`}</Text>
           <TouchableOpacity>
             <Text className='text-[#4EC0BB]'>Change</Text>
           </TouchableOpacity>
@@ -101,7 +101,7 @@ const BasketScreen = () => {
           </View>
 
           <TouchableOpacity
-            className='rounded-lg bg-[#4EC0BB] p-4'
+            className='rounded-lg bg-primary p-4'
             onPress={() => navigation.navigate('PreparingOrder')}
           >
             <Text

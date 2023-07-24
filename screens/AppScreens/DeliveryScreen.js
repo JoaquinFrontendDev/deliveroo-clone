@@ -14,7 +14,7 @@ const DeliveryScreen = () => {
   const selectedRestaurant = useSelector(selectRestaurant)
 
   return (
-    <View className='bg-[#4EC0BB] flex-1'>
+    <View className='bg-primary flex-1'>
       <SafeAreaView className='z-50' style={styles.container}>
         <View className='flex-row justify-between items-center p-5'>
           <TouchableOpacity onPress={() => navigation.navigate('Home')}>

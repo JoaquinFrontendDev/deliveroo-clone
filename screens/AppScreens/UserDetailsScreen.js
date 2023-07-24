@@ -134,7 +134,7 @@ const UserDetailsScreen = () => {
           </View>
 
           <TouchableOpacity
-            className={`bg-[#4EC0BB] mx-6 py-3 items-center justify-center rounded-md absolute bottom-10 w-full ease-in-out transition-opacity duration-350 ${ currentUser.isEditing ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-1/2' }`}
+            className={`bg-primary mx-6 py-3 items-center justify-center rounded-md absolute bottom-10 w-full ease-in-out transition-opacity duration-350 ${ currentUser.isEditing ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-1/2' }`}
             onPress={formikSubmit}
             activeOpacity={0.9}
           >

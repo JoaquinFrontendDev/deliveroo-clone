@@ -134,7 +134,7 @@ const SignUpScreen = () => {
 
               {/* Submit button */}
               <TouchableOpacity
-                className='mt-6 bg-[#4EC0BB] flex-row w-full py-4 items-center justify-center rounded'
+                className='mt-6 bg-primary flex-row w-full py-4 items-center justify-center rounded'
                 onPress={formikSubmit}
               >
                 <Text className='text-white text-xl font-semibold'>Create account</Text>

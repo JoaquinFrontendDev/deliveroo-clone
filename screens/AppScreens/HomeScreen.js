@@ -10,9 +10,10 @@ import { MapPinIcon } from 'react-native-heroicons/solid'
 import UserAvatar from '../../components/UserAvatar/UserAvatar'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../slices/userSlice'
-import { fetchFeaturedCategories } from '../../services/sanityService'
+import { fetchAllRestaurants, fetchFeaturedCategories } from '../../services/sanityService'
 import { useUpdateUser } from '../../hooks/useUpdateUser'
 import { selectCurrentCity, setCurrentCity } from '../../slices/currentCitySlice'
+import { setAllRestaurants } from '../../slices/restaurantsSlice'
 
 const HomeScreen = () => {
   const navigation = useNavigation()
@@ -40,6 +41,10 @@ const HomeScreen = () => {
     getCurrentCity()
     updateUser()
     fetchFeaturedData()
+    fetchAllRestaurants()
+      .then((data) => {
+        dispatch(setAllRestaurants(data))
+      })
   }, [])
 
 

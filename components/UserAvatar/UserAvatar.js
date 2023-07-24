@@ -14,7 +14,7 @@ function UserAvatar ({ size }) {
     )
   } else if (currentUser) {
     return (
-      <View className='items-center justify-center rounded-full bg-[#4EC0BB] w-8 h-8 my-4'>
+      <View className='items-center justify-center rounded-full bg-primary w-8 h-8 my-4'>
         <Text className='text-xl text-white font-bold'>{currentUser.userFirstLetter}</Text>
       </View>
     )

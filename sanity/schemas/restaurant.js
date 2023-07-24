@@ -59,6 +59,18 @@ export default {
       type: "array",
       title: "Dishes",
       of: [{ type: "reference", to: [{ type: "dish" }] }]
+    },
+    {
+      name: "delivery_time",
+      type: "string",
+      title: "Delivery Time (in minutes)",
+      validation: (Rule) => Rule.required()
+        .regex(/^[0-9]+-[0-9]+$/, {
+          name: 'validDeliveryTime',
+          invert: false,
+          description: 'Valid delivery time should be in the format "30-35".'
+        })
+        .error("Please enter a valid delivery time in the format '30-35'")
     }
   ]
 };

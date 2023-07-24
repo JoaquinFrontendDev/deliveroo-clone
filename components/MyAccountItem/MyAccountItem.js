@@ -16,7 +16,7 @@ const MyAccountItem = ({ icon: Icon, label, footerText, redirectionUrl }) => {
             {footerText && <Text className='text-xs text-gray-400'>{footerText}</Text>}
           </View>
         </View>
-        <ChevronRightIcon size={22} color="#4EC0BB" />
+        <ChevronRightIcon size={22} className='text-primary' />
       </View>
     </TouchableWithoutFeedback>
   )

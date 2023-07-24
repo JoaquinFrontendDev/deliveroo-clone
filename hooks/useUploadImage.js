@@ -41,8 +41,6 @@ export const useUploadImage = () => {
       const snapshot = await uploadBytes(storageRef, blob)
       const updatedImageUrl = await getDownloadURL(snapshot.ref)
       await updateProfile(auth.currentUser, { photoURL: updatedImageUrl })
-      console.log('Profile image updated correctly:', updatedImageUrl)
-
       updateUser().finally(() => {
         showToast('success', 'imageUpload')
       })

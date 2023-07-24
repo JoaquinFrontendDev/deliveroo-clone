@@ -11,7 +11,9 @@ const initialState = {
     short_description: null,
     dishes: null,
     lat: null,
-    long: null
+    long: null,
+    delivery_time: null,
+    isFavorite: false
   },
 }
 
@@ -21,12 +23,16 @@ export const restaurantSlice = createSlice({
   reducers: {
     setRestaurant: (state, { payload }) => {
       state.restaurant = payload
-    }
+      state.restaurant.isFavorite = false
+    },
+    toggleFavorite: (state) => {
+      state.restaurant.isFavorite = !state.restaurant.isFavorite;
+    },
   }
 })
 
 /** Actions */
-export const { setRestaurant } = restaurantSlice.actions
+export const { setRestaurant, toggleFavorite } = restaurantSlice.actions
 
 /** Selectors */
 export const selectRestaurant = createSelector(

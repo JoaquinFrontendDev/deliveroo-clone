@@ -1,33 +1,23 @@
 import { View, Text, ScrollView } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { ArrowRightIcon } from 'react-native-heroicons/outline';
 import RestaurantCard from '../RestaurantCard/RestaurantCard';
-import sanityClient from '../../sanity';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectRestaurantsByCategory, setRestaurantsByCategory } from '../../slices/restaurantsSlice';
+import { fetchRestaurantsByCategory } from '../../services/sanityService';
 
 const FeaturedRow = ({ id, title, description }) => {
-  const [restaurants, setRestaurants] = useState([]);
+  const dispatch = useDispatch();
+  const restaurants = useSelector((state) =>
+    selectRestaurantsByCategory(state, id)
+  );
 
   useEffect(() => {
-    sanityClient
-      .fetch(
-        `
-    *[_type == "featured" && _id == $id] {
-      ...,
-      restaurants[]->{
-        ...,
-        dishes[] ->,
-        type-> {
-          name
-        }
-          },
-        }[0]
-    `,
-        { id }
-      )
+    fetchRestaurantsByCategory(id)
       .then((data) => {
-        setRestaurants(data.restaurants);
+        dispatch(setRestaurantsByCategory({ categoryId: id, restaurants: data.restaurants }));
       });
-  }, [id]);
+  }, [id, dispatch]);
 
   return (
     <View>
@@ -58,6 +48,7 @@ const FeaturedRow = ({ id, title, description }) => {
             dishes={restaurant.dishes}
             long={restaurant.long}
             lat={restaurant.lat}
+            delivery_time={restaurant.delivery_time}
           />
         ))}
       </ScrollView>

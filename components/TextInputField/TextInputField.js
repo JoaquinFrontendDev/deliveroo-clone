@@ -29,7 +29,7 @@ const TextInputField = ({ name, ...props }) => {
         {...props}
       />
       {props.isEditable && (
-        <TouchableOpacity activeOpacity={0.9} className={`absolute right-0 bottom-2 ${ allowEdit ? 'bg-gray-300' : 'bg-[#4EC0BB]' }  p-1 rounded-md`} onPress={onUserEditing}>
+        <TouchableOpacity activeOpacity={0.9} className={`absolute right-0 bottom-2 ${ allowEdit ? 'bg-gray-300' : 'bg-primary' }  p-1 rounded-md`} onPress={onUserEditing}>
           <Text className='text-white text-xs'>{`${ allowEdit ? 'Cancel' : 'Change' }`}</Text>
         </TouchableOpacity>
       )}

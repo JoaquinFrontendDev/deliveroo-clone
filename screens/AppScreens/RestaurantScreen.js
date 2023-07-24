@@ -1,5 +1,5 @@
 import { ScrollView, View, Text, Image, StyleSheet, Platform } from 'react-native'
-import React, { useEffect, useLayoutEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { urlFor } from '../../sanity'
 import Constants from 'expo-constants'
@@ -7,18 +7,19 @@ import { TouchableOpacity } from 'react-native'
 import {
   ArrowLeftIcon,
   ChevronRightIcon,
+  HeartIcon,
   MapPinIcon,
   QuestionMarkCircleIcon,
   StarIcon,
 } from "react-native-heroicons/solid";
+import { HeartIcon as OutlinedHeartIcon } from 'react-native-heroicons/outline'
 import DishRow from '../../components/DishRow/DishRow'
 import BasketIcon from '../../components/BasketIcon/BasketIcon'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setRestaurant } from '../../slices/restaurantSlice'
+import { selectIsFavorite, toggleFavorite } from '../../slices/restaurantsSlice'
 
 const RestaurantScreen = () => {
-  const navigation = useNavigation()
-  const dispatch = useDispatch()
 
   const {
     params: {
@@ -31,7 +32,8 @@ const RestaurantScreen = () => {
       short_description,
       dishes,
       long,
-      lat
+      lat,
+      delivery_time
     },
   } = useRoute()
 
@@ -47,9 +49,17 @@ const RestaurantScreen = () => {
         short_description,
         dishes,
         long,
-        lat
+        lat,
+        delivery_time
       }))
   }, [dispatch])
+
+  const navigation = useNavigation()
+  const dispatch = useDispatch()
+  const isFavorite = useSelector(state => selectIsFavorite(state, id));
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite(id));
+  };
 
   return (
     <>
@@ -66,6 +76,9 @@ const RestaurantScreen = () => {
             onPress={navigation.goBack}
           >
             <ArrowLeftIcon size={20} color="#00CCBB" />
+          </TouchableOpacity>
+          <TouchableOpacity activeOpacity={0.9} onPress={handleToggleFavorite} className='absolute top-14 right-5'>
+            {isFavorite ? <HeartIcon size={26} fill="white" /> : <OutlinedHeartIcon size={26} stroke="white" />}
           </TouchableOpacity>
         </View>
 

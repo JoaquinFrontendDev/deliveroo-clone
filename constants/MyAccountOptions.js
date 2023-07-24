@@ -8,9 +8,9 @@ const MyAccountOptions = [
   },
   {
     icon: HeartIcon,
-    label: 'Favourites',
-    footerText: 'Manage your favourite food',
-    redirectionUrl: ''
+    label: 'Favorites',
+    footerText: 'Manage your favorite restaurants',
+    redirectionUrl: 'MyFavorites'
   },
   {
     icon: UserIcon,

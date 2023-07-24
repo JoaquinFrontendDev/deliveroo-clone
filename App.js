@@ -19,6 +19,7 @@ import MyAccountScreen from './screens/AppScreens/MyAccountScreen';
 import UserDetailsScreen from './screens/AppScreens/UserDetailsScreen';
 import NavigationHeader from './components/NavigationHeader/NavigationHeader';
 import MyOrdersScreen from './screens/AppScreens/MyOrdersScreen';
+import FavoritesScreen from './screens/AppScreens/FavoritesScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -52,6 +53,7 @@ const MainStack = () => (
     <Stack.Screen name="MyAccount" component={MyAccountScreen} />
     <Stack.Screen name="UserDetails" component={UserDetailsScreen} />
     <Stack.Screen name="MyOrders" component={MyOrdersScreen} />
+    <Stack.Screen name="MyFavorites" component={FavoritesScreen} />
   </Stack.Navigator>
 );
 
