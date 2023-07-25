@@ -7,12 +7,12 @@ export default function LoadingScreen () {
     <SafeAreaView className='bg-white flex-1 justify-center items-center'>
       <Image
         source={require('../../assets/deliveroo-logo.png')}
-        className='w-96 h-96'
+        className='w-72 h-72'
       />
-      <Text className='text-2xl px-6 mt-10 text-[#4EC0BB] font-bold text-center'>
+      <Text className='text-xl px-6 mt-10 text-[#4EC0BB] font-bold text-center'>
         Just a second...
       </Text>
-      <Text className='text-2xl px-6 text-[#4EC0BB] mb-10 font-bold text-center'>
+      <Text className='text-xl px-6 text-[#4EC0BB] mb-10 font-bold text-center'>
         We are checking your credentials
       </Text>
       <Progress.Bar size={60} indeterminate={true} color="#4EC0BB" />
