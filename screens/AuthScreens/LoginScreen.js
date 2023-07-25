@@ -71,6 +71,7 @@ const LoginScreen = () => {
               <TouchableOpacity
                 className='mt-6 bg-primary flex-row w-full py-4 items-center justify-center rounded'
                 onPress={formikSubmit}
+                activeOpacity={0.9}
               >
                 <Text className='text-white text-xl font-bold'>Log in</Text>
               </TouchableOpacity>

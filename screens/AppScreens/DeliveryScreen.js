@@ -17,7 +17,7 @@ const DeliveryScreen = () => {
     <View className='bg-primary flex-1'>
       <SafeAreaView className='z-50' style={styles.container}>
         <View className='flex-row justify-between items-center p-5'>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity onPress={() => navigation.navigate('Home')} activeOpacity={0.9}>
             <XMarkIcon color="white" size={30} />
           </TouchableOpacity>
           <Text className='font-light text-white text-lg'>Order Help</Text>
@@ -27,7 +27,7 @@ const DeliveryScreen = () => {
           <View className='flex-row justify-between'>
             <View>
               <Text className='text-lg text-gray-400'>Estimated Arrival</Text>
-              <Text className='text-4xl font-bold'>45-55 Minutes</Text>
+              <Text className='text-4xl font-bold'>{`${selectedRestaurant.delivery_time} min`}</Text>
             </View>
 
             <Image source={{

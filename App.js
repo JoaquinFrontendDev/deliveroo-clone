@@ -21,7 +21,10 @@ import NavigationHeader from './components/NavigationHeader/NavigationHeader';
 import MyOrdersScreen from './screens/AppScreens/MyOrdersScreen';
 import FavoritesScreen from './screens/AppScreens/FavoritesScreen';
 import FAQsScreen from './screens/AppScreens/FAQsScreen';
-import AllergyInfo from './screens/AppScreens/AllergyInfo';
+import CategoryScreen from './screens/AppScreens/CategoryScreen';
+import FeaturedScreen from './screens/AppScreens/FeaturedScreen';
+import AllergyInfoScreen from './screens/AppScreens/AllergyInfoScreen';
+import DishDetailsScreen from './screens/AppScreens/DishDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -50,6 +53,7 @@ const MainStack = () => (
     <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
     <Stack.Screen name="Restaurant" component={RestaurantScreen} options={{ headerShown: false }} />
     <Stack.Screen name="Basket" component={BasketScreen} options={{ presentation: 'modal', headerShown: false }} />
+    <Stack.Screen name="DishDetail" component={DishDetailsScreen} options={{ presentation: 'modal', headerShown: false }} />
     <Stack.Screen name="PreparingOrder" component={PreparingOrderScreen} options={{ presentation: 'fullScreenModal', headerShown: false }} />
     <Stack.Screen name="Delivery" component={DeliveryScreen} options={{ presentation: 'fullScreenModal', headerShown: false }} />
     <Stack.Screen name="MyAccount" component={MyAccountScreen} />
@@ -57,7 +61,9 @@ const MainStack = () => (
     <Stack.Screen name="MyOrders" component={MyOrdersScreen} />
     <Stack.Screen name="MyFavorites" component={FavoritesScreen} />
     <Stack.Screen name="FAQs" component={FAQsScreen} />
-    <Stack.Screen name="AllergyInfo" component={AllergyInfo} />
+    <Stack.Screen name="AllergyInfo" component={AllergyInfoScreen} />
+    <Stack.Screen name="Category" component={CategoryScreen} />
+    <Stack.Screen name="Featured" component={FeaturedScreen} />
   </Stack.Navigator>
 );
 

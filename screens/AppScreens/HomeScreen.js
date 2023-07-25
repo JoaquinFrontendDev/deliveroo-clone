@@ -10,16 +10,16 @@ import { MapPinIcon } from 'react-native-heroicons/solid'
 import UserAvatar from '../../components/UserAvatar/UserAvatar'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectCurrentUser } from '../../slices/userSlice'
-import { fetchAllRestaurants, fetchFeaturedCategories } from '../../services/sanityService'
+import { fetchAllRestaurants, fetchFeaturedCategories, getCategories } from '../../services/sanityService'
 import { useUpdateUser } from '../../hooks/useUpdateUser'
 import { selectCurrentCity, setCurrentCity } from '../../slices/currentCitySlice'
 import { setAllRestaurants } from '../../slices/restaurantsSlice'
+import { setCategories } from '../../slices/categoriesSlice'
 
 const HomeScreen = () => {
   const navigation = useNavigation()
   const [featuredCategories, setFeaturedCategories] = useState([])
   const currentCity = useSelector(selectCurrentCity)
-  const currentUser = useSelector(selectCurrentUser)
   const updateUser = useUpdateUser()
   const dispatch = useDispatch()
 
@@ -44,6 +44,10 @@ const HomeScreen = () => {
     fetchAllRestaurants()
       .then((data) => {
         dispatch(setAllRestaurants(data))
+      })
+    getCategories()
+      .then((data) => {
+        dispatch(setCategories(data))
       })
   }, [])
 
@@ -105,7 +109,8 @@ const style = StyleSheet.create({
   container: {
     marginTop: Platform.select({
       android: Constants.statusBarHeight
-    })
+    }),
+    marginBottom: 40
   }
 })
 

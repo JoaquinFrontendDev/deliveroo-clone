@@ -1,13 +1,11 @@
-import { useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setUserLastOrder } from '../slices/userSlice';
-import { selectBasketItems } from '../slices/basketSlice';
+import { useSelector } from "react-redux";
+import { selectBasketItems } from "../slices/basketSlice";
+import { useMemo } from "react";
 
 const useGroupedBasketItems = () => {
   const selectedBasketItems = useSelector(selectBasketItems)
-  const dispatch = useDispatch()
 
-  useMemo(() => {
+  return useMemo(() => {
     const groupedBasketItems = selectedBasketItems.reduce((results, item) => {
       if (results[item.id]) {
         results[item.id].count += 1;
@@ -17,9 +15,8 @@ const useGroupedBasketItems = () => {
       return results;
     }, {});
 
-    dispatch(setUserLastOrder(Object.values(groupedBasketItems)));
-  }, [selectedBasketItems, dispatch]);
-
+    return Object.values(groupedBasketItems);
+  }, [selectedBasketItems]);
 };
 
-export default useGroupedBasketItems;
+export default useGroupedBasketItems

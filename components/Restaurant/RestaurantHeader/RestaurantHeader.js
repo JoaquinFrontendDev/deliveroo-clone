@@ -27,6 +27,7 @@ const RestaurantHeader = ({ imageUrl, id }) => {
       <TouchableOpacity
         className='absolute top-14 left-5 bg-gray-100 rounded-full p-2'
         onPress={navigation.goBack}
+        activeOpacity={0.9}
       >
         <ArrowLeftIcon size={20} color="#00CCBB" />
       </TouchableOpacity>

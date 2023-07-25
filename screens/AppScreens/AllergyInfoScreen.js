@@ -2,7 +2,7 @@ import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 import AllergyContent from '../../constants/AllergyInfoContent'
 
-const AllergyInfo = () => {
+const AllergyInfoScreen = () => {
   return (
     <View className='bg-white flex-1 px-4'>
       <ScrollView contentContainerStyle={{ paddingBottom: 60 }}>
@@ -20,4 +20,4 @@ const AllergyInfo = () => {
   )
 }
 
-export default AllergyInfo
+export default AllergyInfoScreen

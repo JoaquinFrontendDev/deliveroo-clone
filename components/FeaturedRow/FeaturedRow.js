@@ -1,31 +1,37 @@
-import { View, Text, ScrollView } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useEffect } from 'react';
 import { ArrowRightIcon } from 'react-native-heroicons/outline';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectRestaurantsByCategory, setRestaurantsByCategory } from '../../slices/restaurantsSlice';
-import { fetchRestaurantsByCategory } from '../../services/sanityService';
+import { selectFeaturedRestaurants, setFeaturedRestaurants } from '../../slices/restaurantsSlice';
+import { fetchFeaturedRestaurants } from '../../services/sanityService';
 import RestaurantCard from '../Restaurant/RestaurantCard/RestaurantCard';
+import { useNavigation } from '@react-navigation/native';
 
 const FeaturedRow = ({ id, title, description }) => {
   const dispatch = useDispatch();
+  const navigation = useNavigation()
   const restaurants = useSelector((state) =>
-    selectRestaurantsByCategory(state, id)
+    selectFeaturedRestaurants(state, id)
   );
 
   useEffect(() => {
-    fetchRestaurantsByCategory(id)
+    fetchFeaturedRestaurants(id)
       .then((data) => {
-        dispatch(setRestaurantsByCategory({ categoryId: id, restaurants: data.restaurants }));
+        dispatch(setFeaturedRestaurants({ featuredId: id, restaurants: data.restaurants }));
       });
   }, [id, dispatch]);
 
   return (
     <View>
-      <View className='mt-4 flex-row items-center justify-between px-4'>
-        <Text className='font-bold text-lg'>{title}</Text>
-        <ArrowRightIcon color="#00CCBB" />
-      </View>
-      <Text className='text-xs text-gray-500 px-4'>{description}</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('Featured', { featuredTitle: title, id, description })} activeOpacity={0.9}>
+        <>
+          <View className='mt-4 flex-row items-center justify-between px-4'>
+            <Text className='font-bold text-lg'>{title}</Text>
+            <ArrowRightIcon color="#00CCBB" />
+          </View>
+          <Text className='text-xs text-gray-500 px-4'>{description}</Text>
+        </>
+      </TouchableOpacity>
 
       <ScrollView
         horizontal

@@ -21,6 +21,7 @@ const BasketHeader = () => {
         <TouchableOpacity
           onPress={navigation.goBack}
           className='rounded-full bg-gray-100 absolute top-3 right-5'
+          activeOpacity={0.9}
         >
           <XCircleIcon color="#00CCBB" height={50} width={50} />
         </TouchableOpacity>

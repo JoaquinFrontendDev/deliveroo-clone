@@ -25,6 +25,7 @@ const BasketItem = ({ count, image, name, price, id }) => {
         <Text
           className='text-[#4EC0BB] text-xs'
           onPress={() => dispatch(removeFromBasket({ id }))}
+          activeOpacity={0.9}
         >
           Remove
         </Text>

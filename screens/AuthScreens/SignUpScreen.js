@@ -55,6 +55,7 @@ const SignUpScreen = () => {
             <TouchableOpacity
               onPress={navigation.goBack}
               className='rounded-full bg-gray-100 absolute top-12 left-5 items-center p-1'
+              activeOpacity={0.9}
             >
               <ArrowLeftIcon color="#00CCBB" size={25} />
             </TouchableOpacity>
@@ -136,6 +137,7 @@ const SignUpScreen = () => {
               <TouchableOpacity
                 className='mt-6 bg-primary flex-row w-full py-4 items-center justify-center rounded'
                 onPress={formikSubmit}
+                activeOpacity={0.9}
               >
                 <Text className='text-white text-xl font-semibold'>Create account</Text>
               </TouchableOpacity>

@@ -19,7 +19,7 @@ export const fetchFeaturedCategories = async () => {
   }
 }
 
-export const fetchRestaurantsByCategory = async (categoryId) => {
+export const fetchFeaturedRestaurants = async (categoryId) => {
   const query = `
     *[_type == "featured" && _id == $categoryId] {
       ...,
@@ -58,6 +58,33 @@ export const fetchAllRestaurants = async () => {
     return data;
   } catch (error) {
     console.error('Error fetching all restaurants:', error);
+    throw error;
+  }
+}
+
+export const getCategories = () => {
+  return sanityClient
+    .fetch(`*[_type == "category"]`)
+    .then((data) => data)
+    .catch((error) => console.error(error));
+};
+
+export const fetchRestaurantsByCategory = async (categoryName) => {
+  const query = `
+    *[_type == "restaurant" && type->name == $categoryName] {
+      ...,
+      dishes[] ->,
+      type-> {
+        name
+      }
+    }
+  `;
+
+  try {
+    const data = await sanityClient.fetch(query, { categoryName })
+    return data
+  } catch (error) {
+    console.error('Error fetching restaurants by category:', error);
     throw error;
   }
 }

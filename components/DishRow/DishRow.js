@@ -4,28 +4,21 @@ import { formatPrice } from '../../utils/formatPrice'
 import { urlFor } from '../../sanity'
 import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/solid'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToBasket, removeFromBasket, selectBasketItems, selectBasketItemsWithId } from '../../slices/basketSlice'
+import { addToBasket, removeFromBasket, selectBasketItemsWithId } from '../../slices/basketSlice'
+import { useNavigation } from '@react-navigation/native'
 
 const DishRow = ({ id, name, description, price, image }) => {
 
-  const [isPressed, setIsPressed] = useState(false)
   const dispatch = useDispatch()
+  const navigation = useNavigation()
   const selectedBasketItems = useSelector((state) => selectBasketItemsWithId(state, id))
-
-  const addItemToBasket = () => {
-    dispatch(addToBasket({ id, name, description, price, image }))
-  }
-
-  const removeItemFromBasket = () => {
-    if (!selectedBasketItems.length > 0) return
-    dispatch(removeFromBasket({ id }))
-  }
 
   return (
     <>
       <TouchableOpacity
-        onPress={() => setIsPressed(!isPressed)}
-        className={`bg-white border p-4 border-gray-200 ${ isPressed && 'border-b-0' }`}
+        onPress={() => navigation.navigate('DishDetail', {id, name, description, price, image})}
+        className='bg-white border p-4 border-gray-200'
+        activeOpacity={0.9}
       >
         <View className='flex-row'>
           <View className='flex-1 pr-2'>
@@ -48,30 +41,6 @@ const DishRow = ({ id, name, description, price, image }) => {
           </View>
         </View>
       </TouchableOpacity>
-
-      {isPressed && (
-        <View className='bg-white px-4'>
-          <View className='flex-row items-center space-x-2 pb-3'>
-            <TouchableOpacity
-            onPress={removeItemFromBasket}
-            disabled={!selectedBasketItems.length}>
-              <MinusCircleIcon
-                color={`${ selectedBasketItems.length <= 0 ? 'gray' : '#00CCBB' }`}
-                size={40}
-              />
-            </TouchableOpacity>
-
-            <Text>{selectedBasketItems.length}</Text>
-
-            <TouchableOpacity onPress={addItemToBasket}>
-              <PlusCircleIcon
-                color="#00CCBB"
-                size={40}
-              />
-            </TouchableOpacity>
-          </View>
-        </View>
-      )}
     </>
   )
 }

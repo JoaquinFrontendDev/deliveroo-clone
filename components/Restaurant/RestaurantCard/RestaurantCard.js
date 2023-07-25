@@ -65,6 +65,7 @@ const RestaurantCard = ({
         lat,
         delivery_time,
       })}
+      activeOpacity={0.9}
     >
       <Image
         source={{ uri: urlFor(imageUrl).url() }}

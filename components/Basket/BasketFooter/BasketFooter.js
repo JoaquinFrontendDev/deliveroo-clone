@@ -1,14 +1,24 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { useSelector } from 'react-redux'
-import { selectBasketTotal } from '../../../slices/basketSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { selectBasketItems, selectBasketTotal, setBasketEmpty } from '../../../slices/basketSlice'
 import { useNavigation } from '@react-navigation/native'
 import { formatPrice } from '../../../utils/formatPrice'
+import { setGroupedAndUserLastOrder } from '../../../slices/userSlice'
+import useGroupedBasketItems from '../../../hooks/useGroupedBasketItems'
 
 const BasketFooter = () => {
 
   const selectedBasketTotal = useSelector(selectBasketTotal)
+  const groupedBasketItems = useGroupedBasketItems()
   const navigation = useNavigation()
+  const dispatch = useDispatch()
+  console.log(groupedBasketItems)
+
+  const onOrderPlaced = () => {
+    dispatch(setBasketEmpty())
+    navigation.navigate('PreparingOrder')
+  }
 
   return (
     <View className='p-5 bg-white mt-5 space-y-4'>
@@ -27,7 +37,8 @@ const BasketFooter = () => {
 
       <TouchableOpacity
         className='rounded-lg bg-primary p-4'
-        onPress={() => navigation.navigate('PreparingOrder')}
+        onPress={onOrderPlaced}
+        activeOpacity={0.9}
       >
         <Text
           className='text-center text-white text-lg font-bold'

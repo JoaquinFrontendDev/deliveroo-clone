@@ -1,4 +1,4 @@
-import { ReceiptPercentIcon, HeartIcon, UserIcon } from 'react-native-heroicons/solid'
+import { ReceiptPercentIcon, HeartIcon, UserIcon, QuestionMarkCircleIcon } from 'react-native-heroicons/solid'
 
 const MyAccountOptions = [
   {
@@ -19,6 +19,7 @@ const MyAccountOptions = [
     redirectionUrl: 'UserDetails'
   },
   {
+    icon: QuestionMarkCircleIcon,
     label: 'FAQs',
     redirectionUrl: 'FAQs'
   },

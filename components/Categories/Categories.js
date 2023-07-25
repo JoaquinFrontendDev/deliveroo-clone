@@ -1,23 +1,11 @@
 import { ScrollView } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import CategoryCard from './CategoryCard'
-import sanityClient, { urlFor } from '../../sanity';
+import { useSelector } from 'react-redux';
+import { selectCategories } from '../../slices/categoriesSlice';
 
 const Categories = () => {
-  const [categories, setCategories] = useState([])
-
-  useEffect(() => {
-    sanityClient
-      .fetch(
-        `
-        *[_type == "category"]
-    `
-      )
-      .then((data) => {
-        setCategories(data);
-      });
-  }, []);
-
+  const categories = useSelector(selectCategories)
 
   return (
     <ScrollView
@@ -33,6 +21,7 @@ const Categories = () => {
           key={category._id}
           imageUrl={category.image}
           title={category.title}
+          category={category}
         />
       ))}
     </ScrollView>
