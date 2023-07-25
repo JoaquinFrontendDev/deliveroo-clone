@@ -1,19 +1,16 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectBasketItems, selectBasketTotal, setBasketEmpty } from '../../../slices/basketSlice'
+import { selectBasketTotal, setBasketEmpty } from '../../../slices/basketSlice'
 import { useNavigation } from '@react-navigation/native'
 import { formatPrice } from '../../../utils/formatPrice'
 import { setGroupedAndUserLastOrder } from '../../../slices/userSlice'
-import useGroupedBasketItems from '../../../hooks/useGroupedBasketItems'
 
 const BasketFooter = () => {
 
   const selectedBasketTotal = useSelector(selectBasketTotal)
-  const groupedBasketItems = useGroupedBasketItems()
   const navigation = useNavigation()
   const dispatch = useDispatch()
-  console.log(groupedBasketItems)
 
   const onOrderPlaced = () => {
     dispatch(setBasketEmpty())

@@ -41,26 +41,24 @@ export const currentUserSlice = createSlice({
     setIsEditing: (state, { payload }) => {
       state.currentUser.isEditing = payload;
     },
-    setUserLastOrder: (state, { payload }) => {
-      state.currentUser.lastOrder = payload
-    },
     setGroupedAndUserLastOrder: (state, { payload }) => {
       const groupedBasketItems = payload.reduce((results, item) => {
-        if (results[item.id]) {
-          results[item.id].count += 1;
+        const found = results.find(basketItem => basketItem.id === item.id);
+        if (found) {
+          found.count += 1;
         } else {
-          results[item.id] = { ...item, count: 1 };
+          results.push({ ...item, count: 1 });
         }
         return results;
-      }, {});
+      }, []);
 
-      state.currentUser.lastOrder = Object.values(groupedBasketItems);
+      state.currentUser.lastOrder = groupedBasketItems;
     }
   }
 })
 
 /** Actions */
-export const { setCurrentUser, setIsEditing, setUserLastOrder, setGroupedAndUserLastOrder } = currentUserSlice.actions
+export const { setCurrentUser, setIsEditing, setGroupedAndUserLastOrder } = currentUserSlice.actions
 
 /** Selectors */
 export const selectCurrentUser = createSelector(

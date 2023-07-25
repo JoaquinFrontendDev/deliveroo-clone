@@ -46,10 +46,8 @@ export const selectBasketItems = createSelector(
   items => items
 )
 
-export const selectBasketTotal = createSelector(
-  state => state.basket.items,
-  items => items.reduce((total, item) => total += item.price, 0)
-)
+export const selectBasketTotal = (state) =>
+  state.basket.items.flat().reduce((total, item) => total + item.price * (item.count || 1), 0);
 
 /** Reducers export */
 export default basketSlice.reducer

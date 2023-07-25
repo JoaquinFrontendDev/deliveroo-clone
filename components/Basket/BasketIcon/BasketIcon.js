@@ -5,23 +5,21 @@ import { selectBasketItems, selectBasketTotal } from '../../../slices/basketSlic
 import { useNavigation } from '@react-navigation/native'
 import { TouchableOpacity } from 'react-native'
 import { formatPrice } from '../../../utils/formatPrice'
-import { selectCurrentUser, setUserLastOrder } from '../../../slices/userSlice'
-import useGroupedBasketItems from '../../../hooks/useGroupedBasketItems'
+import { setGroupedAndUserLastOrder } from '../../../slices/userSlice'
 
 const BasketIcon = () => {
 
-  const groupedBasketItems = useGroupedBasketItems()
   const selectedBasketTotal = useSelector(selectBasketTotal)
   const selectedBasketItems = useSelector(selectBasketItems)
   const navigation = useNavigation()
   const dispatch = useDispatch()
 
   const onViewBasket = () => {
-    dispatch(setUserLastOrder(groupedBasketItems))
+    dispatch(setGroupedAndUserLastOrder(selectedBasketItems))
     navigation.navigate('Basket')
   }
 
-  if (!groupedBasketItems.length) return null
+  if (!selectedBasketItems.length) return null
 
   return (
     <View className='absolute bottom-10 w-full z-50'>
