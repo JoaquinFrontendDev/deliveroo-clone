@@ -16,6 +16,7 @@ export const categoriesSlice = createSlice({
   },
 });
 
+/** Actions */
 export const { setCategories, setFeaturedCategories } = categoriesSlice.actions;
 
 // Selectors
@@ -28,4 +29,5 @@ export const selectCategoriesMemoized = createSelector(
   categories => categories
 );
 
+/** Reducers export */
 export default categoriesSlice.reducer;

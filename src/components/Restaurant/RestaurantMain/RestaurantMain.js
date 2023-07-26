@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, TouchableHighlight } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { ChevronRightIcon, MapPinIcon, QuestionMarkCircleIcon, StarIcon } from 'react-native-heroicons/solid'
 import { useNavigation } from '@react-navigation/native'

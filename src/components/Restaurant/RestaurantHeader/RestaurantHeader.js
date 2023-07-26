@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
+import { View, TouchableOpacity, StyleSheet, Image } from 'react-native'
 import React from 'react'
 import { urlFor } from '../../../../sanity'
 import { useDispatch, useSelector } from 'react-redux'

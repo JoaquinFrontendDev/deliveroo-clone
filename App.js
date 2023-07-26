@@ -11,9 +11,6 @@ import DeliveryScreen from '@screens/AppScreens/DeliveryScreen';
 import LoginScreen from '@screens/AuthScreens/LoginScreen';
 import SignUpScreen from '@screens/AuthScreens/SignUpScreen';
 import ForgetPasswordScreen from '@screens/AuthScreens/ForgetPasswordScreen';
-import { useEffect, useState } from 'react';
-import { onAuthStateChanged } from 'firebase/auth';
-import { FIREBASE_AUTH } from './firebaseConfig';
 import LoadingScreen from '@screens/AuthScreens/LoadingScreen';
 import MyAccountScreen from '@screens/AppScreens/MyAccountScreen';
 import NavigationHeader from '@components/NavigationHeader/NavigationHeader';
@@ -26,8 +23,9 @@ import DishDetailsScreen from '@screens/AppScreens/DishDetailsScreen';
 import FAQsScreen from '@screens/AppScreens/FAQsScreen';
 
 const Stack = createNativeStackNavigator();
+const RootStack = createNativeStackNavigator()
 
-const AuthStack = () => (
+const Auth = () => (
   <Stack.Navigator
     screenOptions={{
       header: ({ navigation, route, options }) => (
@@ -35,13 +33,13 @@ const AuthStack = () => (
       )
     }}
   >
-    <Stack.Screen name="Login" component={LoginScreen} />
+    <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
     <Stack.Screen name="SignUp" component={SignUpScreen} />
     <Stack.Screen name="ForgetPassword" component={ForgetPasswordScreen} />
   </Stack.Navigator>
 );
 
-const MainStack = () => (
+const Main = () => (
   <Stack.Navigator
     screenOptions={{
       header: ({ navigation, route, options }) => (
@@ -66,28 +64,14 @@ const MainStack = () => (
 );
 
 export default function App () {
-  const [stateUser, setStateUser] = useState(null)
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    onAuthStateChanged(FIREBASE_AUTH, (user) => {
-      if (user) {
-        const { displayName, email, photoURL } = user;
-        setStateUser({ displayName, email, photoUrl: photoURL });
-        setIsLoading(false)
-      }
-      setIsLoading(false)
-    });
-  }, [onAuthStateChanged]);
-
-  if (isLoading) {
-    return <LoadingScreen />
-  }
-
   return (
     <Provider store={store}>
       <NavigationContainer>
-        {stateUser ? <MainStack /> : <AuthStack />}
+        <RootStack.Navigator screenOptions={{ headerShown: false }}>
+          <RootStack.Screen name="Loading" component={LoadingScreen} />
+          <RootStack.Screen name="Auth" component={Auth} />
+          <RootStack.Screen name="Main" component={Main} />
+        </RootStack.Navigator>
       </NavigationContainer>
     </Provider>
   );

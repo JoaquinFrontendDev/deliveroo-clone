@@ -1,8 +1,36 @@
 import { Image, SafeAreaView, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect } from 'react'
 import * as Progress from 'react-native-progress'
+import { useDispatch } from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
+import { setCurrentUser } from '@slices/userSlice';
+import { onAuthStateChanged } from 'firebase/auth';
+import { FIREBASE_AUTH } from '../../../firebaseConfig';
 
 export default function LoadingScreen () {
+
+  const navigation = useNavigation();
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    onAuthStateChanged(FIREBASE_AUTH, (user) => {
+      if (user) {
+        const { displayName, email, photoURL } = user;
+        dispatch(setCurrentUser({displayName, email, photoURL}))
+
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Main' }],
+        });
+      } else {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Auth' }],
+        });
+      }
+    });
+  }, []);
+
   return (
     <SafeAreaView className='bg-white flex-1 justify-center items-center'>
       <Image

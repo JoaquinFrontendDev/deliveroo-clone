@@ -1,4 +1,4 @@
-import { ReceiptPercentIcon, HeartIcon, UserIcon, QuestionMarkCircleIcon } from 'react-native-heroicons/solid'
+import { ReceiptPercentIcon, HeartIcon, QuestionMarkCircleIcon } from 'react-native-heroicons/solid'
 
 const MyAccountOptions = [
   {

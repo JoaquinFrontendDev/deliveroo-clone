@@ -42,9 +42,6 @@ const LoginScreen = () => {
       {({ handleSubmit: formikSubmit }) => {
         return (
           <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingTop: 80, paddingBottom: 50, backgroundColor: 'white', paddingHorizontal: 18 }}>
-            <View className='absolute top-14 right-5'>
-              <Text className='text-xl text-[#4EC0BB]'>{`You're logging in`}</Text>
-            </View>
             <SafeAreaView className='flex-1 items-center justify-center space-y-10 bg-white'>
               {/* Username input */}
               <View className='w-full'>
@@ -69,7 +66,7 @@ const LoginScreen = () => {
 
               {/* Submit button */}
               <TouchableOpacity
-                className='mt-6 bg-primary flex-row w-full py-4 items-center justify-center rounded'
+                className='mt-6 bg-primary flex-row w-full p-4 items-center justify-center rounded-lg'
                 onPress={formikSubmit}
                 activeOpacity={0.9}
               >
@@ -77,7 +74,7 @@ const LoginScreen = () => {
               </TouchableOpacity>
 
               {/* Footer */}
-              <View className='border border-gray-300 rounded w-full items-center py-4'>
+              <View className='border border-gray-300 w-full items-center p-4 rounded-lg'>
                 <Text onPress={() => navigation.navigate('ForgetPassword')} className='text-[#4EC0BB] text-xl'>Forgot password</Text>
               </View>
               <View className='flex-row items-center justify-center'>

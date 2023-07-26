@@ -9,7 +9,7 @@ import AccountMain from '@components/Account/AccountMain/AccountMain'
 const MyAccountScreen = () => {
 
   return (
-    <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingBottom: 50 }}>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <SafeAreaView className='flex-1'>
         <AccountHeader />
         <AccountMain />

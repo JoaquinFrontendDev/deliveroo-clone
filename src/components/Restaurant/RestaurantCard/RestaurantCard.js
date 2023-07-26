@@ -5,7 +5,7 @@ import { MapPinIcon, HeartIcon as OutlinedHeartIcon } from 'react-native-heroico
 import { urlFor } from '../../../../sanity';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectRestaurant, setRestaurant } from '@slices/restaurantSlice';
+import { setRestaurant } from '@slices/restaurantSlice';
 import { selectIsFavorite, toggleFavorite } from '@slices/restaurantsSlice';
 import { formatRating } from '@utils/formatRating';
 

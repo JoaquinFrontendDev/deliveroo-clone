@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectBasketTotal, setBasketEmpty } from '@slices/basketSlice'
 import { useNavigation } from '@react-navigation/native'
 import { formatPrice } from '@utils/formatPrice'
-import { setGroupedAndUserLastOrder } from '@slices/userSlice'
 
 const BasketFooter = () => {
 

@@ -1,4 +1,4 @@
-import { View, Text, ScrollView } from 'react-native'
+import { ScrollView } from 'react-native'
 import React, { useEffect } from 'react'
 import Categories from '../../Categories/Categories'
 import FeaturedRow from '../../FeaturedRow/FeaturedRow'

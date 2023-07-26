@@ -1,7 +1,8 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
 import MyAccountOptions from '../../../constants/MyAccountOptions'
 import MyAccountItem from '../../MyAccountItem/MyAccountItem'
+import SignOutButton from '../SignOutButton/SignOutButton'
 
 const AccountMain = () => {
   return (
@@ -16,6 +17,7 @@ const AccountMain = () => {
           />
         </View>
       ))}
+      <SignOutButton />
     </View>
   )
 }

@@ -29,8 +29,10 @@ export const restaurantsSlice = createSlice({
   },
 });
 
+/** Actions */
 export const { setFeaturedRestaurants, setAllRestaurants, toggleFavorite } = restaurantsSlice.actions;
 
+/** Selectors */
 export const selectFeaturedRestaurants = (state, featuredId) =>
   state.restaurants.featuredRestaurants[featuredId];
 export const selectAllRestaurants = (state) => state.restaurants.allRestaurants
@@ -46,5 +48,5 @@ export const selectRestaurantByCategory = createSelector(
 );
 export const selectFavoriteRestaurants = (state) => state.restaurants.favorites;
 
-
+/** Reducers export */
 export default restaurantsSlice.reducer;

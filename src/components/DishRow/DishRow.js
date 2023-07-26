@@ -1,17 +1,11 @@
 import { TouchableOpacity, View, Text, Image } from 'react-native'
-import React, { useState } from 'react'
+import React from 'react'
 import { formatPrice } from '@utils/formatPrice'
 import { urlFor } from '../../../sanity'
-import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/solid'
-import { useDispatch, useSelector } from 'react-redux'
-import { addToBasket, removeFromBasket, selectBasketItemsWithId } from '@slices/basketSlice'
 import { useNavigation } from '@react-navigation/native'
 
 const DishRow = ({ id, name, description, price, image }) => {
-
-  const dispatch = useDispatch()
   const navigation = useNavigation()
-  const selectedBasketItems = useSelector((state) => selectBasketItemsWithId(state, id))
 
   return (
     <>

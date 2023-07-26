@@ -1,4 +1,4 @@
-import { SafeAreaView, Text, StyleSheet } from 'react-native'
+import { SafeAreaView, StyleSheet } from 'react-native'
 import React from 'react'
 import Constants from 'expo-constants'
 import * as Animatable from 'react-native-animatable'

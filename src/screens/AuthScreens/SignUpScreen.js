@@ -2,10 +2,8 @@ import { View, Text, SafeAreaView, TouchableOpacity, ScrollView } from 'react-na
 import React, { useState } from 'react'
 import { FIREBASE_AUTH } from '../../../firebaseConfig'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
-import { useNavigation } from '@react-navigation/native'
 import { Formik } from 'formik';
 import { signupValidationSchema } from '@schemas/signup'
-import { ArrowLeftIcon } from 'react-native-heroicons/solid'
 import TextInputField from '@components/TextInputField/TextInputField'
 import { toastConfig } from '@components/Toaster/toastConfig'
 import Toast from 'react-native-toast-message'
@@ -15,7 +13,6 @@ import { useUpdateUser } from '@hooks/useUpdateUser'
 const SignUpScreen = () => {
   const auth = FIREBASE_AUTH
   const [isPasswordVisible, setPasswordVisible] = useState(false);
-  const navigation = useNavigation()
   const updateUser = useUpdateUser()
 
   const initialValues = {
@@ -51,17 +48,7 @@ const SignUpScreen = () => {
     <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={signupValidationSchema}>
       {({ handleSubmit: formikSubmit }) => {
         return (
-          <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingTop: 100, paddingBottom: 50, backgroundColor: 'white', paddingHorizontal: 18 }}>
-            <TouchableOpacity
-              onPress={navigation.goBack}
-              className='rounded-full bg-gray-100 absolute top-12 left-5 items-center p-1'
-              activeOpacity={0.9}
-            >
-              <ArrowLeftIcon color="#00CCBB" size={25} />
-            </TouchableOpacity>
-            <View className='absolute top-14 right-5'>
-              <Text className='text-xl text-[#4EC0BB]'>{`Let's signup!`}</Text>
-            </View>
+          <ScrollView contentContainerStyle={{ flexGrow: 1, justifyContent: 'center', paddingBottom: 50, backgroundColor: 'white', paddingHorizontal: 18 }}>
             <SafeAreaView className='flex-1 items-center justify-center space-y-10 px-8 bg-white'>
               {/* FirstName input */}
               <View className='w-full'>
@@ -135,7 +122,7 @@ const SignUpScreen = () => {
 
               {/* Submit button */}
               <TouchableOpacity
-                className='mt-6 bg-primary flex-row w-full py-4 items-center justify-center rounded'
+                className='mt-6 bg-primary flex-row w-full py-4 items-center justify-center rounded-lg'
                 onPress={formikSubmit}
                 activeOpacity={0.9}
               >

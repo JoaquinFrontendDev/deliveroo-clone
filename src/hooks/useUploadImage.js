@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage"
 import { updateProfile } from 'firebase/auth'
-import { useDispatch } from 'react-redux'
 import * as ImagePicker from 'expo-image-picker'
 import uuid from 'react-native-uuid'
 import { FIREBASE_AUTH, FIREBASE_STORAGE } from '../../firebaseConfig'
@@ -10,7 +9,6 @@ import { showToast } from '../components/Toaster/showToast'
 
 export const useUploadImage = () => {
   const [userImage, setUserImage] = useState(null)
-  const dispatch = useDispatch()
   const auth = FIREBASE_AUTH
   const storage = FIREBASE_STORAGE
   const updateUser = useUpdateUser()
