@@ -3,8 +3,8 @@ import React from 'react'
 import UserAvatar from '../../UserAvatar/UserAvatar'
 import { PlusCircleIcon } from 'react-native-heroicons/solid'
 import { useSelector } from 'react-redux'
-import { selectCurrentUser } from '../../../slices/userSlice'
-import { useUploadImage } from '../../../hooks/useUploadImage'
+import { selectCurrentUser } from '@slices/userSlice'
+import { useUploadImage } from '@hooks/useUploadImage'
 
 const AccountHeader = () => {
   const currentUser = useSelector(selectCurrentUser)

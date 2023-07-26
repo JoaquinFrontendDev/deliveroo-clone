@@ -1,9 +1,8 @@
-import { View, Text, ScrollView } from 'react-native'
-import React, { useEffect } from 'react'
-import { fetchRestaurantsByCategory } from '../../services/sanityService'
+import { View, ScrollView } from 'react-native'
+import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectRestaurantByCategory } from '../../slices/restaurantsSlice'
-import RestaurantCard from '../../components/Restaurant/RestaurantCard/RestaurantCard'
+import { selectRestaurantByCategory } from '@slices/restaurantsSlice'
+import RestaurantCard from '@components/Restaurant/RestaurantCard/RestaurantCard'
 
 const CategoryScreen = ({ route }) => {
   const { name } = route.params.category
@@ -20,9 +19,8 @@ const CategoryScreen = ({ route }) => {
     >
       <View className='space-y-6 w-full pb-20'>
         {restaurants.map(restaurant => (
-          <View className='w-full'>
+          <View className='w-full' key={restaurant._id}>
             <RestaurantCard
-              key={restaurant._id}
               id={restaurant._id}
               imageUrl={restaurant.image}
               title={restaurant.name}

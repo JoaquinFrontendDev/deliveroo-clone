@@ -2,7 +2,7 @@ import { View, ScrollView } from 'react-native'
 import React from 'react'
 import BasketItem from '../BasketItem/BasketItem'
 import { useSelector } from 'react-redux'
-import { selectCurrentUser } from '../../../slices/userSlice'
+import { selectCurrentUser } from '@slices/userSlice'
 
 const BasketMain = () => {
   const currentUser = useSelector(selectCurrentUser)

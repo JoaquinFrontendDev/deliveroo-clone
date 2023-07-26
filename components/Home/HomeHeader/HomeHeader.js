@@ -1,14 +1,14 @@
 import { View, Text, TouchableWithoutFeedback } from 'react-native'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectCurrentCity, setCurrentCity } from '../../../slices/currentCitySlice'
+import { selectCurrentCity, setCurrentCity } from '@slices/currentCitySlice'
 import { ChevronDownIcon, MapPinIcon, UserIcon } from 'react-native-heroicons/outline'
 import UserAvatar from '../../UserAvatar/UserAvatar'
 import { useNavigation } from '@react-navigation/native'
-import { useCurrentCity } from '../../../hooks/useCurrentCity'
-import { useUpdateUser } from '../../../hooks/useUpdateUser'
-import { fetchAllRestaurants } from '../../../services/sanityService'
-import { setAllRestaurants } from '../../../slices/restaurantsSlice'
+import { useCurrentCity } from '@hooks/useCurrentCity'
+import { useUpdateUser } from '@hooks/useUpdateUser'
+import { fetchAllRestaurants } from '@services/sanityService'
+import { setAllRestaurants } from '@slices/restaurantsSlice'
 
 const HomeHeader = () => {
   const currentCity = useSelector(selectCurrentCity)

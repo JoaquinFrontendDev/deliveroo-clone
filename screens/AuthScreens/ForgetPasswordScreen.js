@@ -4,13 +4,13 @@ import { FIREBASE_AUTH } from '../../firebaseConfig'
 import { sendPasswordResetEmail } from 'firebase/auth'
 import { useNavigation } from '@react-navigation/native'
 import { Formik } from 'formik';
-import { loginValidationSchema } from '../../validationSchemas/login'
-import TextInputField from '../../components/TextInputField/TextInputField'
+import { loginValidationSchema } from '@schemas/login'
+import TextInputField from '@components/TextInputField/TextInputField'
 import { ArrowLeftIcon } from 'react-native-heroicons/solid'
 import Toast from 'react-native-toast-message'
-import { showToast } from '../../components/Toaster/showToast'
-import { passwordRecoveryValidationSchema } from '../../validationSchemas/passwordRecovery'
-import { toastConfig } from '../../components/Toaster/toastConfig'
+import { showToast } from '@components/Toaster/showToast'
+import { passwordRecoveryValidationSchema } from '@schemas/passwordRecovery'
+import { toastConfig } from '@components/Toaster/toastConfig'
 
 const ForgetPasswordScreen = () => {
   const auth = FIREBASE_AUTH

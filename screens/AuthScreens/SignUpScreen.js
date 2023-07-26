@@ -4,13 +4,13 @@ import { FIREBASE_AUTH } from '../../firebaseConfig'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useNavigation } from '@react-navigation/native'
 import { Formik } from 'formik';
-import { signupValidationSchema } from '../../validationSchemas/signup'
+import { signupValidationSchema } from '@schemas/signup'
 import { ArrowLeftIcon } from 'react-native-heroicons/solid'
-import TextInputField from '../../components/TextInputField/TextInputField'
-import { toastConfig } from '../../components/Toaster/toastConfig'
+import TextInputField from '@components/TextInputField/TextInputField'
+import { toastConfig } from '@components/Toaster/toastConfig'
 import Toast from 'react-native-toast-message'
-import { showToast } from '../../components/Toaster/showToast'
-import { useUpdateUser } from '../../hooks/useUpdateUser'
+import { showToast } from '@components/Toaster/showToast'
+import { useUpdateUser } from '@hooks/useUpdateUser'
 
 const SignUpScreen = () => {
   const auth = FIREBASE_AUTH

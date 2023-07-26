@@ -1,10 +1,10 @@
 import { View, ScrollView } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectFeaturedRestaurants } from '../../slices/restaurantsSlice'
-import RestaurantCard from '../../components/Restaurant/RestaurantCard/RestaurantCard'
+import { selectFeaturedRestaurants } from '@slices/restaurantsSlice'
+import RestaurantCard from '@components/Restaurant/RestaurantCard/RestaurantCard'
 
-const FeaturedScreen = ({route}) => {
+const FeaturedScreen = ({ route }) => {
   const { id } = route.params
   const featuredRestaurants = useSelector(state => selectFeaturedRestaurants(state, id))
 
@@ -19,9 +19,8 @@ const FeaturedScreen = ({route}) => {
     >
       <View className='space-y-6 w-full pb-20'>
         {featuredRestaurants.map(restaurant => (
-          <View className='w-full'>
+          <View className='w-full' key={restaurant._id}>
             <RestaurantCard
-              key={restaurant._id}
               id={restaurant._id}
               imageUrl={restaurant.image}
               title={restaurant.name}

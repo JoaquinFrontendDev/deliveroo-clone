@@ -1,8 +1,8 @@
 import { View } from 'react-native'
 import React from 'react'
-import DishDetailHeader from '../../components/DishDetail/DishDetailHeader/DishDetailHeader'
-import DishDetailInfo from '../../components/DishDetail/DishDetailInfo/DishDetailInfo'
-import DishDetailButtons from '../../components/DishDetail/DishDetailButtons/DishDetailButtons'
+import DishDetailHeader from '@components/DishDetail/DishDetailHeader/DishDetailHeader'
+import DishDetailInfo from '@components/DishDetail/DishDetailInfo/DishDetailInfo'
+import DishDetailButtons from '@components/DishDetail/DishDetailButtons/DishDetailButtons'
 
 const DishDetailsScreen = ({ route }) => {
   const { id, name, description, price, image } = route.params

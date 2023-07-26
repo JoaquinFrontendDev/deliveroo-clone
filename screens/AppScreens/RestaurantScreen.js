@@ -2,11 +2,11 @@ import { ScrollView } from 'react-native'
 import React, { useEffect } from 'react'
 import { useRoute } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
-import { setRestaurant } from '../../slices/restaurantSlice'
-import RestaurantHeader from '../../components/Restaurant/RestaurantHeader/RestaurantHeader'
-import RestaurantMain from '../../components/Restaurant/RestaurantMain/RestaurantMain'
-import RestaurantDishes from '../../components/Restaurant/RestaurantDishes/RestaurantDishes'
-import BasketIcon from '../../components/Basket/BasketIcon/BasketIcon'
+import { setRestaurant } from '@slices/restaurantSlice'
+import RestaurantHeader from '@components/Restaurant/RestaurantHeader/RestaurantHeader'
+import RestaurantMain from '@components/Restaurant/RestaurantMain/RestaurantMain'
+import RestaurantDishes from '@components/Restaurant/RestaurantDishes/RestaurantDishes'
+import BasketIcon from '@components/Basket/BasketIcon/BasketIcon'
 
 const RestaurantScreen = () => {
 

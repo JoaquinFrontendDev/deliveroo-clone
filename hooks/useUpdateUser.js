@@ -1,6 +1,6 @@
 // hooks/useUpdateUser.js
 import { useDispatch } from 'react-redux'
-import { setCurrentUser } from '../slices/userSlice'
+import { setCurrentUser } from '@slices/userSlice'
 import { FIREBASE_AUTH } from '../firebaseConfig'
 
 export const useUpdateUser = () => {

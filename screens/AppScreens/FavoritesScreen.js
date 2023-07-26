@@ -1,9 +1,9 @@
 import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectFavoriteRestaurants } from '../../slices/restaurantsSlice'
-import RestaurantCard from '../../components/Restaurant/RestaurantCard/RestaurantCard'
-import EmptyFavorites from '../../components/EmptyStates/EmptyFavorites'
+import { selectFavoriteRestaurants } from '@slices/restaurantsSlice'
+import RestaurantCard from '@components/Restaurant/RestaurantCard/RestaurantCard'
+import EmptyFavorites from '@components/EmptyStates/EmptyFavorites'
 
 const FavoritesScreen = () => {
 
@@ -24,9 +24,8 @@ const FavoritesScreen = () => {
     >
       <View className='space-y-6 w-full pb-20'>
         {favoriteRestaurants.map(restaurant => (
-          <View className='w-full'>
+          <View className='w-full' key={restaurant._id}>
             <RestaurantCard
-              key={restaurant._id}
               id={restaurant._id}
               imageUrl={restaurant.image}
               title={restaurant.name}

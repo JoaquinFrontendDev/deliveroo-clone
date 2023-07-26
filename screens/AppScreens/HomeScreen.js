@@ -1,9 +1,9 @@
-import { SafeAreaView, Platform, StyleSheet} from 'react-native'
+import { SafeAreaView, Platform, StyleSheet } from 'react-native'
 import React from 'react'
 import Constants from 'expo-constants'
-import HomeHeader from '../../components/Home/HomeHeader/HomeHeader'
-import HomeSearchAndFilters from '../../components/Home/HomeSearchAndFilters/HomeSearchAndFilters'
-import HomeMain from '../../components/Home/HomeMain/HomeMain'
+import HomeHeader from '@components/Home/HomeHeader/HomeHeader'
+import HomeSearchAndFilters from '@components/Home/HomeSearchAndFilters/HomeSearchAndFilters'
+import HomeMain from '@components/Home/HomeMain/HomeMain'
 
 const HomeScreen = () => {
 

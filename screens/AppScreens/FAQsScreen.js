@@ -9,8 +9,8 @@ const FAQsScreen = () => {
       <ScrollView contentContainerStyle={{ paddingBottom: 60 }}>
         <Text className='font-bold mt-4 text-lg'>{FaqsContent.title}</Text>
         <View>
-          {FaqsContent.faqs.map(faq => (
-            <View className='mt-4 space-y-2'>
+          {FaqsContent.faqs.map((faq, index) => (
+            <View className='mt-4 space-y-2' key={index}>
               <Text className='text-primary font-semibold'>{faq.question}</Text>
               <Text className='text-xs text-gray-500'>{faq.answer}</Text>
             </View>

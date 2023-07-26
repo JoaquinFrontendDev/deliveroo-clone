@@ -1,7 +1,7 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectCurrentUser } from '../../../slices/userSlice'
+import { selectCurrentUser } from '@slices/userSlice'
 import BasketItem from '../../Basket/BasketItem/BasketItem'
 
 const MyOrderMain = () => {

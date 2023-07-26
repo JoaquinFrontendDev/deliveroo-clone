@@ -1,10 +1,10 @@
 import { TouchableOpacity, View, Text, Image } from 'react-native'
 import React, { useState } from 'react'
-import { formatPrice } from '../../utils/formatPrice'
+import { formatPrice } from '@utils/formatPrice'
 import { urlFor } from '../../sanity'
 import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/solid'
 import { useDispatch, useSelector } from 'react-redux'
-import { addToBasket, removeFromBasket, selectBasketItemsWithId } from '../../slices/basketSlice'
+import { addToBasket, removeFromBasket, selectBasketItemsWithId } from '@slices/basketSlice'
 import { useNavigation } from '@react-navigation/native'
 
 const DishRow = ({ id, name, description, price, image }) => {
@@ -16,7 +16,7 @@ const DishRow = ({ id, name, description, price, image }) => {
   return (
     <>
       <TouchableOpacity
-        onPress={() => navigation.navigate('DishDetail', {id, name, description, price, image})}
+        onPress={() => navigation.navigate('DishDetail', { id, name, description, price, image })}
         className='bg-white border p-4 border-gray-200'
         activeOpacity={0.9}
       >

@@ -1,29 +1,29 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/AppScreens/HomeScreen';
+import HomeScreen from '@screens/AppScreens/HomeScreen';
 import "react-native-url-polyfill/auto"
-import RestaurantScreen from './screens/AppScreens/RestaurantScreen';
+import RestaurantScreen from '@screens/AppScreens/RestaurantScreen';
 import { Provider } from 'react-redux';
 import { store } from './store'
-import BasketScreen from './screens/AppScreens/BasketScreen';
-import PreparingOrderScreen from './screens/AppScreens/PreparingOrderScreen';
-import DeliveryScreen from './screens/AppScreens/DeliveryScreen';
-import LoginScreen from './screens/AuthScreens/LoginScreen';
-import SignUpScreen from './screens/AuthScreens/SignUpScreen';
-import ForgetPasswordScreen from './screens/AuthScreens/ForgetPasswordScreen';
+import BasketScreen from '@screens/AppScreens/BasketScreen';
+import PreparingOrderScreen from '@screens/AppScreens/PreparingOrderScreen';
+import DeliveryScreen from '@screens/AppScreens/DeliveryScreen';
+import LoginScreen from '@screens/AuthScreens/LoginScreen';
+import SignUpScreen from '@screens/AuthScreens/SignUpScreen';
+import ForgetPasswordScreen from '@screens/AuthScreens/ForgetPasswordScreen';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { FIREBASE_AUTH } from './firebaseConfig';
-import LoadingScreen from './screens/AuthScreens/LoadingScreen';
-import MyAccountScreen from './screens/AppScreens/MyAccountScreen';
+import LoadingScreen from '@screens/AuthScreens/LoadingScreen';
+import MyAccountScreen from '@screens/AppScreens/MyAccountScreen';
 import NavigationHeader from './components/NavigationHeader/NavigationHeader';
-import MyOrdersScreen from './screens/AppScreens/MyOrdersScreen';
-import FavoritesScreen from './screens/AppScreens/FavoritesScreen';
-import FAQsScreen from './screens/AppScreens/FAQsScreen';
-import CategoryScreen from './screens/AppScreens/CategoryScreen';
-import FeaturedScreen from './screens/AppScreens/FeaturedScreen';
-import AllergyInfoScreen from './screens/AppScreens/AllergyInfoScreen';
-import DishDetailsScreen from './screens/AppScreens/DishDetailsScreen';
+import MyOrdersScreen from '@screens/AppScreens/MyOrdersScreen';
+import FavoritesScreen from '@screens/AppScreens/FavoritesScreen';
+import CategoryScreen from '@screens/AppScreens/CategoryScreen';
+import FeaturedScreen from '@screens/AppScreens/FeaturedScreen';
+import AllergyInfoScreen from '@screens/AppScreens/AllergyInfoScreen';
+import DishDetailsScreen from '@screens/AppScreens/DishDetailsScreen';
+import FAQsScreen from '@screens/AppScreens/FAQsScreen';
 
 const Stack = createNativeStackNavigator();
 

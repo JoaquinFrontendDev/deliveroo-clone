@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image, Text, View } from 'react-native';
 import { useSelector } from 'react-redux';
-import { selectCurrentUser } from '../../slices/userSlice';
+import { selectCurrentUser } from '@slices/userSlice';
 
 function UserAvatar ({ size }) {
   const currentUser = useSelector(selectCurrentUser)

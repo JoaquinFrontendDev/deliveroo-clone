@@ -1,8 +1,8 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/solid'
-import { formatPrice } from '../../../utils/formatPrice'
-import { addToBasket } from '../../../slices/basketSlice'
+import { formatPrice } from '@utils/formatPrice'
+import { addToBasket } from '@slices/basketSlice'
 import { useDispatch } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
 

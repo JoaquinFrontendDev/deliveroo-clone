@@ -2,7 +2,7 @@ import { ScrollView } from 'react-native'
 import React from 'react'
 import CategoryCard from './CategoryCard'
 import { useSelector } from 'react-redux';
-import { selectCategories } from '../../slices/categoriesSlice';
+import { selectCategories } from '@slices/categoriesSlice';
 
 const Categories = () => {
   const categories = useSelector(selectCategories)

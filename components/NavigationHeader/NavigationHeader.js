@@ -1,7 +1,7 @@
 import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { ArrowLeftIcon } from 'react-native-heroicons/solid'
-import { getHeaderText } from '../../utils/getHeaderText'
+import { getHeaderText } from '@utils/getHeaderText'
 
 const NavigationHeader = ({ navigation, route }) => {
 

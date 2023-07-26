@@ -4,12 +4,12 @@ import { FIREBASE_AUTH } from '../../firebaseConfig'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { useNavigation } from '@react-navigation/native'
 import { Formik } from 'formik';
-import { loginValidationSchema } from '../../validationSchemas/login'
-import TextInputField from '../../components/TextInputField/TextInputField'
-import { showToast } from '../../components/Toaster/showToast'
+import { loginValidationSchema } from '@schemas/login'
+import TextInputField from '@components/TextInputField/TextInputField'
+import { showToast } from '@components/Toaster/showToast'
 import Toast from 'react-native-toast-message'
-import { toastConfig } from '../../components/Toaster/toastConfig'
-import { useUpdateUser } from '../../hooks/useUpdateUser'
+import { toastConfig } from '@components/Toaster/toastConfig'
+import { useUpdateUser } from '@hooks/useUpdateUser'
 
 const LoginScreen = () => {
   const auth = FIREBASE_AUTH

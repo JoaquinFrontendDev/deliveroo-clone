@@ -8,8 +8,8 @@ const AllergyInfoScreen = () => {
       <ScrollView contentContainerStyle={{ paddingBottom: 60 }}>
         <Text className='font-bold mt-4 text-lg'>{AllergyContent.title}</Text>
         <View>
-          {AllergyContent.content.map(content => (
-            <View className='mt-4 space-y-2'>
+          {AllergyContent.content.map((content, index) => (
+            <View className='mt-4 space-y-2' key={index}>
               <Text className='text-primary font-semibold'>{content.header}</Text>
               <Text className='text-xs text-gray-500'>{content.description}</Text>
             </View>

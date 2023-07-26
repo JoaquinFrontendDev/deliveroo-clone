@@ -3,8 +3,8 @@ import React, { useEffect } from 'react'
 import Categories from '../../Categories/Categories'
 import FeaturedRow from '../../FeaturedRow/FeaturedRow'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectFeaturedCategories, setCategories, setFeaturedCategories } from '../../../slices/categoriesSlice'
-import { fetchFeaturedCategories, getCategories } from '../../../services/sanityService'
+import { selectFeaturedCategories, setCategories, setFeaturedCategories } from '@slices/categoriesSlice'
+import { fetchFeaturedCategories, getCategories } from '@services/sanityService'
 
 const HomeMain = () => {
   const featuredCategories = useSelector(selectFeaturedCategories)

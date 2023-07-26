@@ -6,7 +6,7 @@ export default function LoadingScreen () {
   return (
     <SafeAreaView className='bg-white flex-1 justify-center items-center'>
       <Image
-        source={require('../../assets/deliveroo-logo.png')}
+        source={require('@assets/deliveroo-logo.png')}
         className='w-72 h-72'
       />
       <Text className='text-xl px-6 mt-10 text-[#4EC0BB] font-bold text-center'>

@@ -2,8 +2,8 @@ import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useEffect } from 'react';
 import { ArrowRightIcon } from 'react-native-heroicons/outline';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFeaturedRestaurants, setFeaturedRestaurants } from '../../slices/restaurantsSlice';
-import { fetchFeaturedRestaurants } from '../../services/sanityService';
+import { selectFeaturedRestaurants, setFeaturedRestaurants } from '@slices/restaurantsSlice';
+import { fetchFeaturedRestaurants } from '@services/sanityService';
 import RestaurantCard from '../Restaurant/RestaurantCard/RestaurantCard';
 import { useNavigation } from '@react-navigation/native';
 

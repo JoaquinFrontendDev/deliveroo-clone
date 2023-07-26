@@ -1,9 +1,9 @@
 import { View, SafeAreaView, StyleSheet } from 'react-native'
 import React from 'react'
 import Constants from 'expo-constants'
-import BasketFooter from '../../components/Basket/BasketFooter/BasketFooter'
-import BasketHeader from '../../components/Basket/BasketHeader/BasketHeader'
-import BasketMain from '../../components/Basket/BasketMain/BasketMain'
+import BasketFooter from '@components/Basket/BasketFooter/BasketFooter'
+import BasketHeader from '@components/Basket/BasketHeader/BasketHeader'
+import BasketMain from '@components/Basket/BasketMain/BasketMain'
 
 const BasketScreen = () => {
 

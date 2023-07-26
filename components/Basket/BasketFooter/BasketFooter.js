@@ -1,10 +1,10 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectBasketTotal, setBasketEmpty } from '../../../slices/basketSlice'
+import { selectBasketTotal, setBasketEmpty } from '@slices/basketSlice'
 import { useNavigation } from '@react-navigation/native'
-import { formatPrice } from '../../../utils/formatPrice'
-import { setGroupedAndUserLastOrder } from '../../../slices/userSlice'
+import { formatPrice } from '@utils/formatPrice'
+import { setGroupedAndUserLastOrder } from '@slices/userSlice'
 
 const BasketFooter = () => {
 

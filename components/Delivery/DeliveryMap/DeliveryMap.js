@@ -1,7 +1,7 @@
 import React from 'react'
 import MapView, { Marker } from 'react-native-maps'
 import { useSelector } from 'react-redux'
-import { selectRestaurant } from '../../../slices/restaurantSlice'
+import { selectRestaurant } from '@slices/restaurantSlice'
 
 const DeliveryMap = () => {
   const selectedRestaurant = useSelector(selectRestaurant)

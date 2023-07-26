@@ -1,9 +1,9 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import { removeFromBasket } from '../../../slices/basketSlice'
+import { removeFromBasket } from '@slices/basketSlice'
 import { useDispatch } from 'react-redux'
 import { urlFor } from '../../../sanity'
-import { formatPrice } from '../../../utils/formatPrice'
+import { formatPrice } from '@utils/formatPrice'
 
 const BasketItem = ({ count, image, name, price, id }) => {
 

@@ -1,7 +1,7 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectRestaurant } from '../../../slices/restaurantSlice'
+import { selectRestaurant } from '@slices/restaurantSlice'
 import { urlFor } from '../../../sanity'
 import { useNavigation } from '@react-navigation/native'
 import { XCircleIcon } from 'react-native-heroicons/solid'

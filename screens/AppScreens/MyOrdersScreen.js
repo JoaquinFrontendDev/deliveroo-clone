@@ -1,10 +1,10 @@
 import { ScrollView } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { selectCurrentUser } from '../../slices/userSlice'
-import EmptyOrders from '../../components/EmptyStates/EmptyOrders'
-import MyOrderMain from '../../components/MyOrder/MyOrderMain/MyOrderMain'
-import MyOrderButton from '../../components/MyOrder/MyOrderButton/MyOrderButton'
+import { selectCurrentUser } from '@slices/userSlice'
+import EmptyOrders from '@components/EmptyStates/EmptyOrders'
+import MyOrderMain from '@components/MyOrder/MyOrderMain/MyOrderMain'
+import MyOrderButton from '@components/MyOrder/MyOrderButton/MyOrderButton'
 
 const MyOrdersScreen = () => {
   const currentUser = useSelector(selectCurrentUser)

@@ -2,8 +2,8 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import { selectCurrentUser } from '../../../slices/userSlice'
-import { addToBasket } from '../../../slices/basketSlice'
+import { selectCurrentUser } from '@slices/userSlice'
+import { addToBasket } from '@slices/basketSlice'
 
 const MyOrderButton = () => {
   const navigation = useNavigation()

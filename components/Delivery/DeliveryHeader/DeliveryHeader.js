@@ -4,7 +4,7 @@ import { XMarkIcon } from 'react-native-heroicons/solid'
 import * as Progress from 'react-native-progress'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
-import { selectRestaurant } from '../../../slices/restaurantSlice'
+import { selectRestaurant } from '@slices/restaurantSlice'
 
 const DeliveryHeader = () => {
   const navigation = useNavigation()
