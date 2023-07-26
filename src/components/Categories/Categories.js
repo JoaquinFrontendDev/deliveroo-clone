@@ -20,7 +20,7 @@ const Categories = () => {
         <CategoryCard
           key={category._id}
           imageUrl={category.image}
-          title={category.title}
+          title={category.name}
           category={category}
         />
       ))}

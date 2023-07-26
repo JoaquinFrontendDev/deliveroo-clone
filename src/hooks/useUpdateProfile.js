@@ -38,7 +38,6 @@ export const useUpdateProfile = (initialValues) => {
     await updateProfile(auth.currentUser, updateObject)
       .then(() => {
         showToast('success', 'userUpload')
-        console.log(updateObject)
       })
       .catch((error) => {
         showToast('error', 'userUpload')
