@@ -11,13 +11,8 @@ const BasketScreen = () => {
   return (
     <SafeAreaView style={styles.container} className='flex-1 bg-white'>
       <View className='flex-1 bg-gray-100'>
-        {/* Header */}
         <BasketHeader />
-
-        {/* Main */}
         <BasketMain />
-
-        {/* Footer */}
         <BasketFooter />
       </View>
     </SafeAreaView>

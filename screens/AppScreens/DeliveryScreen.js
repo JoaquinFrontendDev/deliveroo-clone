@@ -1,94 +1,18 @@
-import { View, SafeAreaView, Text, Image, TouchableOpacity, StyleSheet } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
-import { useSelector } from 'react-redux'
-import { selectRestaurant } from '../../slices/restaurantSlice'
-import { XMarkIcon } from 'react-native-heroicons/solid'
-import * as Progress from 'react-native-progress'
-import MapView, { Marker } from 'react-native-maps'
-import Constants from 'expo-constants'
+import DeliveryHeader from '../../components/Delivery/DeliveryHeader/DeliveryHeader'
+import DeliveryMap from '../../components/Delivery/DeliveryMap/DeliveryMap'
+import DeliveryFooter from '../../components/Delivery/DeliveryFooter/DeliveryFooter'
 
 const DeliveryScreen = () => {
 
-  const navigation = useNavigation()
-  const selectedRestaurant = useSelector(selectRestaurant)
-
   return (
     <View className='bg-primary flex-1'>
-      <SafeAreaView className='z-50' style={styles.container}>
-        <View className='flex-row justify-between items-center p-5'>
-          <TouchableOpacity onPress={() => navigation.navigate('Home')} activeOpacity={0.9}>
-            <XMarkIcon color="white" size={30} />
-          </TouchableOpacity>
-          <Text className='font-light text-white text-lg'>Order Help</Text>
-        </View>
-
-        <View className='bg-white mx-5 my-2 rounded-md p-6 z-50 shadow-md'>
-          <View className='flex-row justify-between'>
-            <View>
-              <Text className='text-lg text-gray-400'>Estimated Arrival</Text>
-              <Text className='text-4xl font-bold'>{`${selectedRestaurant.delivery_time} min`}</Text>
-            </View>
-
-            <Image source={{
-              uri: "https://links.papareact.com/fls"
-            }}
-              className='h-20 w-20'
-            />
-          </View>
-          <Progress.Bar size={30} color="#00CCBB" indeterminate={true} />
-
-          <Text className='mt-3 text-gray-500'>
-            Your order at {selectedRestaurant.title} is being prepared
-          </Text>
-        </View>
-      </SafeAreaView>
-
-      <MapView
-        initialRegion={{
-          latitude: Number(selectedRestaurant.lat),
-          longitude: Number(selectedRestaurant.long),
-          latitudeDelta: 0.005,
-          longitudeDelta: 0.005
-        }}
-        className='flex-1 -mt-10 z-0'
-        mapType='standard'
-      >
-        <Marker
-          coordinate={{
-            latitude: Number(selectedRestaurant.lat),
-            longitude: Number(selectedRestaurant.long),
-          }}
-          title={selectedRestaurant.title}
-          description={selectedRestaurant.short_description}
-          identifier='origin'
-          pinColor='#00CCBB'
-        />
-      </MapView>
-
-      <SafeAreaView className='bg-white flex-row items-center space-x-5 h-28'>
-        <Image source={{
-          uri: "https://links.papareact.com/wru"
-        }}
-          className='h-12 w-12 bg-gray-300 p-4 rounded-full ml-5'
-        />
-        <View className='flex-1'>
-          <Text className='text-lg'>Joaquin Retola</Text>
-          <Text className='text-gray-400'>Your Rider</Text>
-        </View>
-
-        <Text className='text-[#4EC0BB] text-lg mr-5 font-bold'>Call</Text>
-      </SafeAreaView>
+      <DeliveryHeader />
+      <DeliveryMap />
+      <DeliveryFooter />
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    marginTop: Platform.select({
-      'android': Constants.statusBarHeight
-    })
-  }
-})
 
 export default DeliveryScreen

@@ -49,13 +49,8 @@ const RestaurantScreen = () => {
     <>
       <BasketIcon />
       <ScrollView>
-        {/* Header */}
         <RestaurantHeader imageUrl={imageUrl} id={id} />
-
-        {/* Main */}
         <RestaurantMain address={address} genre={genre} rating={rating} short_description={short_description} title={title} />
-
-        {/* Dishes */}
         <RestaurantDishes dishes={dishes} />
       </ScrollView>
     </>

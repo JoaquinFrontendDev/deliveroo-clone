@@ -4,6 +4,7 @@ const MyAccountOptions = [
   {
     icon: ReceiptPercentIcon,
     label: 'My Orders',
+    footerText: 'Take a look to what you have ordered',
     redirectionUrl: 'MyOrders'
   },
   {
@@ -11,12 +12,6 @@ const MyAccountOptions = [
     label: 'Favorites',
     footerText: 'Manage your favorite restaurants',
     redirectionUrl: 'MyFavorites'
-  },
-  {
-    icon: UserIcon,
-    label: 'My Details',
-    footerText: 'Check your account details',
-    redirectionUrl: 'UserDetails'
   },
   {
     icon: QuestionMarkCircleIcon,

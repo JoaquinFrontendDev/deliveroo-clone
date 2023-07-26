@@ -34,17 +34,17 @@ const HomeHeader = () => {
     <View className='flex-row pb-3 items-center space-x-2 px-4'>
       <UserAvatar />
       <View className='flex-1'>
-        <Text className='font-bold text-gray-400 text-base'>Now</Text>
+        <Text className='font-bold text-gray-400 text-sm'>Now</Text>
         <View className='flex-row items-center space-x-1'>
           <View>
             {currentCity.city ?
               <View className='flex-row space-x-0.5 items-center'>
                 <MapPinIcon size={15} color='black' />
-                <Text className='font-extrabold text-xl'>
+                <Text className='font-bold text-lg'>
                   {currentCity.city}
                 </Text>
               </View>
-              : <Text className='text-xl text-gray-400 font-bold'>Finding city...</Text>}
+              : <Text className='text-lg text-gray-400 font-bold'>Finding city...</Text>}
           </View>
           <ChevronDownIcon size={20} color="#00CCBB" />
         </View>

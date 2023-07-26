@@ -16,7 +16,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { FIREBASE_AUTH } from './firebaseConfig';
 import LoadingScreen from './screens/AuthScreens/LoadingScreen';
 import MyAccountScreen from './screens/AppScreens/MyAccountScreen';
-import UserDetailsScreen from './screens/AppScreens/UserDetailsScreen';
 import NavigationHeader from './components/NavigationHeader/NavigationHeader';
 import MyOrdersScreen from './screens/AppScreens/MyOrdersScreen';
 import FavoritesScreen from './screens/AppScreens/FavoritesScreen';
@@ -57,7 +56,6 @@ const MainStack = () => (
     <Stack.Screen name="PreparingOrder" component={PreparingOrderScreen} options={{ presentation: 'fullScreenModal', headerShown: false }} />
     <Stack.Screen name="Delivery" component={DeliveryScreen} options={{ presentation: 'fullScreenModal', headerShown: false }} />
     <Stack.Screen name="MyAccount" component={MyAccountScreen} />
-    <Stack.Screen name="UserDetails" component={UserDetailsScreen} />
     <Stack.Screen name="MyOrders" component={MyOrdersScreen} />
     <Stack.Screen name="MyFavorites" component={FavoritesScreen} />
     <Stack.Screen name="FAQs" component={FAQsScreen} />

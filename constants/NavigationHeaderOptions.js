@@ -5,11 +5,6 @@ const NavigationHeaderOptions = [
     headerText: 'My account'
   },
   {
-    route: 'UserDetails',
-    withBackBtn: true,
-    headerText: 'My details'
-  },
-  {
     route: 'Login',
     withBackBtn: true,
     headerText: 'Login'

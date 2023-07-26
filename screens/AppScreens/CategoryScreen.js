@@ -6,7 +6,7 @@ import { selectRestaurantByCategory } from '../../slices/restaurantsSlice'
 import RestaurantCard from '../../components/Restaurant/RestaurantCard/RestaurantCard'
 
 const CategoryScreen = ({ route }) => {
-  const { _id, image, name } = route.params.category
+  const { name } = route.params.category
   const restaurants = useSelector(state => selectRestaurantByCategory(state, name))
 
   return (
