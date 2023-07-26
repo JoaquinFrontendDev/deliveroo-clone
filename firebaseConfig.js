@@ -3,12 +3,12 @@ import { getAuth } from 'firebase/auth'
 import { getStorage } from 'firebase/storage'
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB_-i1vk8IkP3JeRHj-cJ7OtjTPiUjVgU0",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "deliveroo-clone-fe004.firebaseapp.com",
   projectId: "deliveroo-clone-fe004",
   storageBucket: "deliveroo-clone-fe004.appspot.com",
   messagingSenderId: "168498642232",
-  appId: "1:168498642232:web:c6a15ded8f3fdaa5d855cd"
+  appId: process.env.FIREBASE_API_ID
 };
 
 export const FIREBASE_APP = initializeApp(firebaseConfig);

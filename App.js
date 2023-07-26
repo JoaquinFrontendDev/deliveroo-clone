@@ -4,7 +4,7 @@ import HomeScreen from '@screens/AppScreens/HomeScreen';
 import "react-native-url-polyfill/auto"
 import RestaurantScreen from '@screens/AppScreens/RestaurantScreen';
 import { Provider } from 'react-redux';
-import { store } from './store'
+import { store } from './src/store/store'
 import BasketScreen from '@screens/AppScreens/BasketScreen';
 import PreparingOrderScreen from '@screens/AppScreens/PreparingOrderScreen';
 import DeliveryScreen from '@screens/AppScreens/DeliveryScreen';
@@ -16,7 +16,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { FIREBASE_AUTH } from './firebaseConfig';
 import LoadingScreen from '@screens/AuthScreens/LoadingScreen';
 import MyAccountScreen from '@screens/AppScreens/MyAccountScreen';
-import NavigationHeader from './components/NavigationHeader/NavigationHeader';
+import NavigationHeader from '@components/NavigationHeader/NavigationHeader';
 import MyOrdersScreen from '@screens/AppScreens/MyOrdersScreen';
 import FavoritesScreen from '@screens/AppScreens/FavoritesScreen';
 import CategoryScreen from '@screens/AppScreens/CategoryScreen';
