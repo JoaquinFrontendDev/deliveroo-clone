@@ -5,6 +5,7 @@ import * as Progress from 'react-native-progress'
 import { useNavigation } from '@react-navigation/native'
 import { useSelector } from 'react-redux'
 import { selectRestaurant } from '@slices/restaurantSlice'
+import Constants from 'expo-constants'
 
 const DeliveryHeader = () => {
   const navigation = useNavigation()
